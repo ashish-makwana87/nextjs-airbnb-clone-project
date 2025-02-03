@@ -2,26 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer components {
+  .alignment {
+    @apply mx-auto max-w-6xl lg:max-w-7xl px-8;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .head-1 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide;
+  }
+
+  .head-2 {
+    @apply text-2xl font-semibold tracking-wide capitalize md:text-3xl;
+  }
+
+  .head-3 {
+    @apply text-xl font-semibold tracking-wide capitalize md:text-2xl;
+  }
+
+  .head-4 {
+    @apply text-lg font-semibold tracking-wide capitalize md:text-xl;
+  }
+
+  .head-5 {
+    @apply text-lg font-semibold tracking-wide capitalize md:text-xl;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
