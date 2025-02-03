@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "NextJS Airbnb Clone Project",
   description:
-    "Created with Clerk Auth, Prisma, MongoDB, Supabase, Zod, React, TypeScript, Tailwind CSS, and Shadcn.",
+    "Created with Clerk Auth, Prisma, Supabase, Zod, React, TypeScript, Tailwind CSS, and Shadcn.",
 };
 
 export default function RootLayout({
