@@ -25,7 +25,7 @@ function FormContainer({
     }
   }, [state]);
 
-  return <form action={formAction}></form>;
+  return <form action={formAction}>{children}</form>;
 }
 
 export default FormContainer;

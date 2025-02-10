@@ -23,7 +23,7 @@ export const SubmitButton = ({
       type='submit'
       disabled={pending}
       size={size}
-      className={`capitalize ${className}`}
+      className={`capitalize mt-2 text-base ${className}`}
     >
       {pending ? (
         <>
