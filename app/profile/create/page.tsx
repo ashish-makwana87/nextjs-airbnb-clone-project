@@ -2,8 +2,18 @@ import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
 import { createProfileAction } from "@/utils/actions";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-function ProfileCreatePage() {
+
+async function ProfileCreatePage() {
+
+ const user = await currentUser();
+
+if(user?.privateMetadata?.hasProfile) {
+redirect('/')
+}
+
   return (
     <section className='alignment mt-10 md:mt-20'>
       <h1 className='head-3 capitalize mb-6'>new user</h1>
