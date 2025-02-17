@@ -3,7 +3,6 @@ import Image from "next/image";
 import { SubmitButton } from "@/components/form/Buttons";
 import FormContainer from "@/components/form/FormContainer";
 import ImageInput from "./ImageInput";
-import { updateImageAction } from "@/utils/actions";
 import { actionFunction } from "@/utils/types";
 import { LucideUser2 } from "lucide-react";
 import { useState } from "react";
@@ -13,7 +12,7 @@ import { Separator } from "../ui/separator";
 type ImageUpdateProps = {
   image: string;
   name: string;
-  text: string;
+  text?: string;
   action: actionFunction;
   children?: React.ReactNode;
 };
@@ -53,7 +52,7 @@ function ImageUpdateContainer(props: ImageUpdateProps) {
               <FormContainer action={action}>
                 {children}
                 <ImageInput />
-                <SubmitButton size='sm' className='text-sm' text='update image' />
+                <SubmitButton size='sm' className='text-sm' />
               </FormContainer>
             </div>
           )}

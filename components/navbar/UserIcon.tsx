@@ -9,14 +9,14 @@ async function UserIcon() {
       <img
         src={profileImage}
         alt='profile image'
-        className='h-10 w-10 rounded-full object-cover'
+        className='h-6 w-6 rounded-full object-cover'
       />
     );
   }
 
   return (
     <div>
-      <LucideUser2 className='h-10 w-10 bg-primary text-white rounded-full dark:bg-transparent ' />
+      <LucideUser2 className='h-6 w-6 bg-primary text-white rounded-full dark:bg-transparent' />
     </div>
   );
 }

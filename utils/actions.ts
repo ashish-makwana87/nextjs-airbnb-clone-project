@@ -16,7 +16,7 @@ const getClerkUser = async () => {
 
 const renderError = (error: unknown): { message: string } => {
   return {
-    message: error instanceof Error ? error.message : "something went wrong...",
+    message: error instanceof Error ? error.message : "Something went wrong...",
   };
 };
 
@@ -58,12 +58,12 @@ export const fetchProfileImage = async () => {
 
   if (!user) return null;
 
-  const profileImage = await db.profile.findUnique({
-    where: { id: user.id },
+  const profile = await db.profile.findUnique({
+    where: { clerkId: user.id },
     select: { profileImage: true },
   });
 
-  return profileImage?.profileImage;
+  return profile?.profileImage;
 };
 
 export const fetchProfileAction = async () => {
@@ -74,26 +74,29 @@ export const fetchProfileAction = async () => {
   return profile;
 };
 
+export const updateProfileAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  try {
+    const user = await getClerkUser();
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(profileSchema, rawData);
 
-export const updateProfileAction = async (prevState: any,
-  formData: FormData):Promise<{ message: string }> => {
+    await db.profile.update({
+      where: { clerkId: user.id },
+      data: { ...validatedFields },
+    });
+    revalidatePath("/profile");
+    return { message: "Profile updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
 
- try {
-  const user = await getClerkUser(); 
-  const rawData = Object.fromEntries(formData); 
-  const validatedFields = validateWithZodSchema(profileSchema, rawData);
-
-  await db.profile.update({where: {clerkId: user.id}, data: {...validatedFields}})
-  revalidatePath('/profile')
-  return {message: 'profile updated successfully'}
- } catch (error) {
-  return renderError(error)
- }
-}
-
-
-export const updateImageAction = async (prevState:any, formData:FormData):Promise<{message: string}> => {
-
-return {message: 'image updated'}
-
-}
+export const updateProfileImageAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  return { message: "Image updated successfully" };
+};
