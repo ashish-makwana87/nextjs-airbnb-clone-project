@@ -4,6 +4,6 @@
     "react/no-unescaped-entities": 0,
     "@next/next/no-page-custom-font": 0,
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars" : 2
+    "@typescript-eslint/no-unused-vars": 1
   }
 }
