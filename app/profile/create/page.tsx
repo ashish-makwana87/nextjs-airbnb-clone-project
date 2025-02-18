@@ -15,7 +15,7 @@ redirect('/')
 }
 
   return (
-    <section className='alignment mt-10 md:mt-20'>
+    <section className='alignment my-10 md:my-20'>
       <h1 className='head-3 capitalize mb-6'>new user</h1>
       <div className='border p-8 rounded-md max-w-2xl'>
         <FormContainer action={createProfileAction}>

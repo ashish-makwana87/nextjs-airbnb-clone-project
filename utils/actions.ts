@@ -1,9 +1,10 @@
 "use server";
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
-import { imageSchema, profileSchema, validateWithZodSchema } from "./schemas";
+import { imageSchema, profileSchema, propertySchema, validateWithZodSchema } from "./schemas";
 import { redirect } from "next/navigation";
 import db from "./db";
 import { revalidatePath } from "next/cache";
+import { uploadImage } from "./supabase";
 
 const getClerkUser = async () => {
   const user = await currentUser();
@@ -99,17 +100,38 @@ export const updateProfileImageAction = async (
   formData: FormData
 ): Promise<{ message: string }> => {
 
- try {
- const image = formData.get('image');
- const validatedFile = validateWithZodSchema(imageSchema, {image})
+  try {
+    const user = await getClerkUser();
+    const image = formData.get("image");
+    const validatedFile = validateWithZodSchema(imageSchema, { image });
 
- console.log(validatedFile);
+    const imageUrl = await uploadImage(validatedFile.image);
 
- return { message: "Image updated successfully" };
+    await db.profile.update({
+      where: { clerkId: user.id },
+      data: { profileImage: imageUrl },
+    });
+    revalidatePath("/profile");
+    return { message: "Image updated successfully" };
 
- } catch (error) {
- return renderError(error); 
- }
+  } catch (error) {
+    return renderError(error);
+  }
 };
 
+export const createPropertyAction = async (prevState:any, formData:FormData):Promise<{message: string}> => {
+
+try {
+  const user = await getClerkUser();
+  const rawData = Object.fromEntries(formData.entries())
+  const validatedFields = validateWithZodSchema(propertySchema, rawData)
+
+  return {message: 'Property created successfully'}
+} catch (error) {
+  
+  return renderError(error)
+}
+
+
+} 
 

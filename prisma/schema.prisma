@@ -18,7 +18,26 @@ model Profile {
  profileImage String
  createdAt DateTime @default(now())
  updatedAt DateTime @updatedAt
+ properties Property[]
 }
 
-
+model Property {
+ id String @id @default(uuid()) @map("_id")
+ name String
+ tagline String
+ category String
+ image String
+ country String
+ description String
+ price Int
+ guests Int
+ beds Int
+ bedrooms Int
+ baths Int
+ amenities String
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ profile Profile @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+ profileId String
+}
 
