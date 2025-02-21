@@ -8,7 +8,7 @@ function ImageInput() {
  const name = 'image'
 
   return (
-   <div className='mb-2'>
+   <div className='mb-4'>
     <Label htmlFor={name}>Image</Label>
     <Input id={name} name={name} type='file' required accept='image/*' className='max-w-xs mt-1' />
    </div>

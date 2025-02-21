@@ -1,5 +1,7 @@
+import AmenitiesInput from "@/components/form/AmenitiesInput";
 import { SubmitButton } from "@/components/form/Buttons";
 import CategoriesInput from "@/components/form/CategoriesInput";
+import CounterInput from "@/components/form/CounterInput";
 import CountriesInput from "@/components/form/CountriesInput";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
@@ -27,13 +29,25 @@ function CreateRentalPage() {
               label='Tagline (limit: 30 char)'
               defaultValue='Dream getaway luxury experience'
             />
-            <PriceInput />
             <CategoriesInput />
+            <PriceInput />
           </div>
           <TextAreaInput name='description' label='description' />
-          <div className="grid md:grid-cols-2 gap-x-4 mt-6">
-          <CountriesInput />
-          <ImageInput />
+          <div className='grid md:grid-cols-2 gap-x-4 mt-6 mb-4'>
+            <CountriesInput />
+            
+            <ImageInput />
+          </div>
+          <div>
+            <h2 className='head-4 mb-4'>Accommodation details</h2>
+            <CounterInput detail='guests' />
+            <CounterInput detail='bedrooms' />
+            <CounterInput detail='beds' />
+            <CounterInput detail='baths' />
+          </div>
+          <div className='mt-6 md:mt-8'>
+            <h2 className='head-4 mb-4'>Amenities</h2>
+            <AmenitiesInput />
           </div>
           <SubmitButton text='create rental' />
         </FormContainer>

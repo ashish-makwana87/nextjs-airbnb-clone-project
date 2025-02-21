@@ -9,10 +9,9 @@ import {
 } from "../ui/select";
 import { formattedCountries } from "@/utils/countries";
 
-const name = "countries";
+const name = "country";
 
 function CountriesInput({ defaultValue }: { defaultValue?: string }) {
- 
   return (
     <div className='mb-3'>
       <Label htmlFor={name} className='capitalize'>

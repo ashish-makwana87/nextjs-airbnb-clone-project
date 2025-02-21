@@ -24,7 +24,7 @@
   }
 
   .head-5 {
-    @apply text-lg font-semibold tracking-wide capitalize md:text-xl;
+    @apply text-base font-semibold tracking-wide capitalize md:text-lg;
   }
 }
 

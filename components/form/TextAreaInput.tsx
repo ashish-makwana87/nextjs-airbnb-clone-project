@@ -14,7 +14,7 @@ function TextAreaInput({name, label, defaultValue}: TextAreaProps) {
   return (
     <div className='mb-3'>
     <Label htmlFor={name} className='capitalize'>{label}</Label>
-    <Textarea rows={5} id={name} name={name} className='mt-1' />
+    <Textarea rows={5} id={name} name={name} required className='mt-1 text-sm md:text-base' />
     </div>
   )
 }

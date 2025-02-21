@@ -10,9 +10,9 @@ function PriceInput({defaultValue}: PriceProps) {
  const name = 'price';
  
   return (
-    <div>
+    <div className="mb-4">
      <Label htmlFor={name}>Price ($)</Label>
-     <Input type="number" name={name} id={name} min={1} defaultValue={defaultValue || 50} required className="mt-1" />
+     <Input type="number" name={name} id={name} min={0} defaultValue={defaultValue || 50} required className="mt-1 text-sm md:text-base" />
     </div>
   )
 }

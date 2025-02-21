@@ -29,12 +29,12 @@ model Property {
  image String
  country String
  description String
- price Int
- guests Int
- beds Int
- bedrooms Int
- baths Int
  amenities String
+ price       Int
+ guests      Int
+ bedrooms    Int
+beds        Int
+baths       Int
  createdAt DateTime @default(now())
  updatedAt DateTime @updatedAt
  profile Profile @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
