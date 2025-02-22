@@ -148,3 +148,24 @@ export const createPropertyAction = async (
   }
   redirect("/");
 };
+
+export const fetchAllProperties = async ({search = '', category}: {search?: string, category?: string}) => {
+
+ const properties = await db.property.findMany({
+  where: {
+    category,
+    OR: [{name: {contains: search, mode: 'insensitive'}}, {tagline: {contains: search, mode: 'insensitive'}}]
+  },
+  select: {
+    image: true,
+    id: true,
+    name: true,
+    country: true,
+    price: true,
+    tagline: true,
+  },
+  orderBy: {createdAt: 'desc'}
+ })
+
+ return properties;
+}
