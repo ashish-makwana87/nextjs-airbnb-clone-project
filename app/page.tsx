@@ -1,11 +1,23 @@
-import React from "react";
+import CategoriesList from "@/components/home/CategoriesList";
+import EmptyList from "@/components/home/EmptyList";
+import PropertiesContainer from "@/components/home/PropertiesContainer";
 
-function HomePage() {
+function HomePage({
+  searchParams,
+}: {
+  searchParams: { category?: string; search?: string };
+}) {
   return (
-    <section>
-      <div className="alignment py-20 grid md:grid-cols-2 gap-10">
-      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nostrum fugiat a, labore, sequi nobis nesciunt similique, dicta harum cum aliquam doloribus quas dolorem? Doloremque aperiam cupiditate facere repellat consequatur.</h2>
-      </div>
+    <section className='alignment my-10 md:my-12'>
+      <EmptyList />
+      <CategoriesList
+        category={searchParams.category}
+        search={searchParams.search}
+      />
+      <PropertiesContainer
+        category={searchParams.category}
+        search={searchParams.search}
+      />
     </section>
   );
 }
