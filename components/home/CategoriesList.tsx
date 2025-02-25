@@ -1,4 +1,3 @@
-import React from "react";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { categories } from "@/utils/categories";
 import Link from "next/link";
