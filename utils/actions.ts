@@ -169,3 +169,28 @@ export const fetchAllProperties = async ({search = '', category}: {search?: stri
 
  return properties;
 }
+
+
+export const fetchFavoriteId = async ({propertyId}:{propertyId:string}) => {
+
+  const user = await getClerkUser()
+  
+  const favorite = await db.favorite.findFirst({where: {profileId: user.id, propertyId}})
+  
+  return favorite?.id || null;
+}
+
+export const toggleFavoriteAction = async (prevState: {favoriteId: string | null, propertyId: string, pathname: string}):Promise<{message: string}> => {
+
+const {propertyId, favoriteId, pathname} = prevState; 
+
+try {
+  
+  return {message: favoriteId ? 'Removed from favorite' : 'added to favorite'}
+} catch (error) {
+  return renderError(error)
+}
+
+
+
+}

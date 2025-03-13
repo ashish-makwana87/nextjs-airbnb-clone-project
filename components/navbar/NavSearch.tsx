@@ -3,13 +3,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "../ui/input";
 import { useState } from "react";
 import {useDebouncedCallback} from 'use-debounce'
+import { fetchAllProperties } from "@/utils/actions";
 
 
 function NavSearch() {
  
   const searchParams = useSearchParams();
   const {replace} = useRouter();
-
   
   const [search, setSearch] = useState(searchParams.get('search')?.toString() || '')
 
