@@ -1,6 +1,6 @@
 ## NextJs Airbnb Clone Project
 
-Created with Clerk Auth, Prisma, Supabase, Zod, React, TypeScript, Tailwind CSS, and Shadcn.
+Created with Clerk Auth, Prisma, Supabase, MongoDB, Zod, React, TypeScript, Tailwind CSS, and Shadcn.
 
 **Project URL:**
 
