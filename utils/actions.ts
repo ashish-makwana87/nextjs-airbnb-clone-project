@@ -149,48 +149,70 @@ export const createPropertyAction = async (
   redirect("/");
 };
 
-export const fetchAllProperties = async ({search = '', category}: {search?: string, category?: string}) => {
+export const fetchAllProperties = async ({
+  search = "",
+  category,
+}: {
+  search?: string;
+  category?: string;
+}) => {
+  const properties = await db.property.findMany({
+    where: {
+      category,
+      OR: [
+        { name: { contains: search, mode: "insensitive" } },
+        { tagline: { contains: search, mode: "insensitive" } },
+      ],
+    },
+    select: {
+      image: true,
+      id: true,
+      name: true,
+      country: true,
+      price: true,
+      tagline: true,
+    },
+    orderBy: { createdAt: "desc" },
+  });
 
- const properties = await db.property.findMany({
-  where: {
-    category,
-    OR: [{name: {contains: search, mode: 'insensitive'}}, {tagline: {contains: search, mode: 'insensitive'}}]
-  },
-  select: {
-    image: true,
-    id: true,
-    name: true,
-    country: true,
-    price: true,
-    tagline: true,
-  },
-  orderBy: {createdAt: 'desc'}
- })
+  return properties;
+};
 
- return properties;
-}
+export const fetchFavoriteId = async ({
+  propertyId,
+}: {
+  propertyId: string;
+}) => {
+  const user = await getClerkUser();
 
+  const favorite = await db.favorite.findFirst({
+    where: { profileId: user.id, propertyId },
+  });
 
-export const fetchFavoriteId = async ({propertyId}:{propertyId:string}) => {
-
-  const user = await getClerkUser()
-  
-  const favorite = await db.favorite.findFirst({where: {profileId: user.id, propertyId}})
-  
   return favorite?.id || null;
-}
+};
 
-export const toggleFavoriteAction = async (prevState: {favoriteId: string | null, propertyId: string, pathname: string}):Promise<{message: string}> => {
+export const toggleFavoriteAction = async (prevState: {
+  favoriteId: string | null;
+  propertyId: string;
+  pathname: string;
+}): Promise<{ message: string }> => {
+  const { propertyId, favoriteId, pathname } = prevState;
 
-const {propertyId, favoriteId, pathname} = prevState; 
+  try {
+    const user = await getClerkUser();
 
-try {
-  
-  return {message: favoriteId ? 'Removed from favorite' : 'added to favorite'}
-} catch (error) {
-  return renderError(error)
-}
+    if (favoriteId) {
+      await db.favorite.delete({ where: { id: favoriteId } });
+    } else {
+      await db.favorite.create({ data: { profileId: user.id, propertyId } });
+    }
 
-
-
-}
+    revalidatePath(pathname);
+    return {
+      message: favoriteId ? "Removed from favorite" : "Added to favorite",
+    };
+  } catch (error) {
+    return renderError(error);
+  }
+};
