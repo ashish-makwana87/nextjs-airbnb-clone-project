@@ -12,6 +12,7 @@ function LoadingCards() {
      <SkeletonCard />
      <SkeletonCard />
      <SkeletonCard />
+     <SkeletonCard />
     </section>
   )
 }
@@ -23,7 +24,6 @@ function SkeletonCard() {
  <Skeleton className='h-4 w-3/4 mt-2 rounded-md' />
  <Skeleton className='h-4 w-3/4 mt-2 rounded-md' />
  </div>
-
 }
 
-export default LoadingCards
+export default LoadingCards;
