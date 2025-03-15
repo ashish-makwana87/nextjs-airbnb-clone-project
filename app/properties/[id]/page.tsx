@@ -1,5 +1,6 @@
 import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import PropertyRatings from "@/components/card/PropertyRatings";
+import Amenities from "@/components/properties/Amenities";
 import BookingCalendar from "@/components/properties/BookingCalendar";
 import PropertyBreadCrumbs from "@/components/properties/BreadCrumbs";
 import Description from "@/components/properties/Description";
@@ -42,6 +43,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         <UserInfo userInfo={userInfo} />
         <Separator className="mt-4" />
         <Description title="description" description={property.description} />
+        <Amenities amenities={property.amenities} />
        </div>
        {/* calendar */}
        <div className="mt-4 md:mt-0 md:col-span-4">
