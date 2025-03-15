@@ -5,7 +5,7 @@ function PropertyRatings({propertyId, inPage}: {propertyId: string, inPage: bool
  const averageRatings = 4.7;
  const totalReviews = 92; 
  const className = `flex gap-x-1 items-center ${inPage ? 'text-base' : 'text-xs'}`;
- const countText = totalReviews > 1 ? 'reviews' : 'review';
+ const countText = totalReviews > 1 ? ' Reviews' : ' Review';
  const countValue = `${totalReviews}${inPage ? countText : ''}`
 
   return (
