@@ -3,14 +3,21 @@ import PropertyRatings from "@/components/card/PropertyRatings";
 import BookingCalendar from "@/components/properties/BookingCalendar";
 import PropertyBreadCrumbs from "@/components/properties/BreadCrumbs";
 import ImageContainer from "@/components/properties/ImageContainer";
+import PropertyDetails from "@/components/properties/PropertyDetails";
 import ShareButton from "@/components/properties/ShareButton";
+import UserInfo from "@/components/properties/UserInfo";
 import { fetchPropertyDetails } from "@/utils/actions";
+import { Separator } from "@radix-ui/react-separator";
 import { redirect } from "next/navigation";
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
 
   if (!property) redirect("/");
+  
+  const {bedrooms, beds, baths, guests} = property;
+  const details = {bedrooms, baths, beds, guests}
+  const userInfo = {firstName: property.profile.firstName, image: property.profile.profileImage}
 
   return (
     <section className='alignment my-10 md:my-20'>
@@ -24,14 +31,18 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
       </header>
       <ImageContainer image={property.image} name={property.name} />
       <section className="md:grid md:grid-cols-12 gap-x-12 mt-4 md:mt-6">
+        {/* property details */}
        <div className="md:col-span-8">
-      {/* property details */}
         <div className="flex items-center gap-x-2 md:gap-x-4">
-       <h4 className="head-4">{property.name}</h4>
+       <h4 className="head-4 font-bold">{property.name}</h4>
        <PropertyRatings inPage={true} propertyId={property.id} />
         </div>
+        <PropertyDetails details={details} />
+        <UserInfo userInfo={userInfo} />
+        <Separator />
        </div>
-       <div className="mt-2 md:mt-0 md:col-span-4">
+       {/* calendar */}
+       <div className="mt-4 md:mt-0 md:col-span-4">
         <BookingCalendar />
        </div>
       </section>

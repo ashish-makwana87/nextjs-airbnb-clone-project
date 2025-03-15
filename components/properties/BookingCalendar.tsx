@@ -17,7 +17,9 @@ function BookingCalendar() {
  console.log(range);
  
   return (
+   <div className="border flex items-center justify-center rounded p-2 w-full" >
     <Calendar mode='range' selected={range} defaultMonth={currentDate} onSelect={setRange} />
+   </div>
   )
 }
 
