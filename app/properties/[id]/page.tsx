@@ -2,12 +2,13 @@ import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import PropertyRatings from "@/components/card/PropertyRatings";
 import BookingCalendar from "@/components/properties/BookingCalendar";
 import PropertyBreadCrumbs from "@/components/properties/BreadCrumbs";
+import Description from "@/components/properties/Description";
 import ImageContainer from "@/components/properties/ImageContainer";
 import PropertyDetails from "@/components/properties/PropertyDetails";
 import ShareButton from "@/components/properties/ShareButton";
 import UserInfo from "@/components/properties/UserInfo";
+import { Separator } from "@/components/ui/separator";
 import { fetchPropertyDetails } from "@/utils/actions";
-import { Separator } from "@radix-ui/react-separator";
 import { redirect } from "next/navigation";
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
@@ -39,7 +40,8 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         </div>
         <PropertyDetails details={details} />
         <UserInfo userInfo={userInfo} />
-        <Separator />
+        <Separator className="mt-4" />
+        <Description title="description" description={property.description} />
        </div>
        {/* calendar */}
        <div className="mt-4 md:mt-0 md:col-span-4">
