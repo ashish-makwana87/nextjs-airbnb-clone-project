@@ -9,8 +9,12 @@ import PropertyDetails from "@/components/properties/PropertyDetails";
 import ShareButton from "@/components/properties/ShareButton";
 import UserInfo from "@/components/properties/UserInfo";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 import { fetchPropertyDetails } from "@/utils/actions";
+import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
+
+const DynamicMap = dynamic(() => import('@/components/properties/PropertyMap'), {ssr: false, loading: () => <Skeleton className="h-[40vh] w-full rounded"/>})
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
@@ -44,6 +48,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         <Separator className="mt-4" />
         <Description title="description" description={property.description} />
         <Amenities amenities={property.amenities} />
+        <DynamicMap code={property.country} />
        </div>
        {/* calendar */}
        <div className="mt-4 md:mt-0 md:col-span-4">

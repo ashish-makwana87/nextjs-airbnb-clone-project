@@ -5,7 +5,7 @@ function Amenities({amenities}:{amenities:string}) {
   
  const amenitiesList:Amenity[] = JSON.parse(amenities)
 
-  const noneSelected = amenitiesList.every((amenity) => amenity.selected === false)
+ const noneSelected = amenitiesList.every((amenity) => amenity.selected === false)
   
   if(noneSelected) return null;
 
