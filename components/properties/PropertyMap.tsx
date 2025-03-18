@@ -36,5 +36,4 @@ function PropertyMap({code}:{code:string}) {
   </section>;
 }
 
-
 export default PropertyMap;

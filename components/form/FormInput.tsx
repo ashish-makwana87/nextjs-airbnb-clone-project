@@ -21,4 +21,5 @@ function FormInput({name, label, defaultValue = '', type, placeholder}: FormInpu
   )
 }
 
-export default FormInput
+export default FormInput; 
+

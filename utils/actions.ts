@@ -232,3 +232,32 @@ export const fetchPropertyDetails = async (propertyId:string) => {
 
  return property;
 }
+
+
+export const createReviewAction = async () => {
+
+ const user = await getClerkUser();
+ 
+ return {message: 'Property created successfully.'}
+}
+
+export const fetchPropertyReviews = async () => {
+
+  const user = await getClerkUser();
+  
+  return {message: 'Property created successfully.'}
+ }
+
+ export const fetchPropertyReviewsByUser = async () => {
+
+  const user = await getClerkUser();
+  
+  return {message: 'Property created successfully.'}
+ }
+
+ export const deleteReviewAction = async () => {
+
+  const user = await getClerkUser();
+  
+  return {message: 'Property created successfully.'}
+ }

@@ -3,6 +3,7 @@
 Created with Clerk Auth, Prisma, Supabase, MongoDB, Zod, React, TypeScript, Tailwind CSS, and Shadcn.
 
 **Project URL:**
+https://nextjs-airbnb-clone-project.vercel.app/
 
 **Key Features:**
 
