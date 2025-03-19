@@ -92,3 +92,10 @@ function validateImage() {
       });
     }, "Invalid file type");
 }
+
+
+export const reviewSchema = z.object({
+  propertyId: z.string(),
+  rating: z.coerce.number().int().min(1).max(5),
+  comment: z.string().min(10, {message: 'review must be of at least 10 characters'}).max(1000, {message: '1000 characters max'})
+})

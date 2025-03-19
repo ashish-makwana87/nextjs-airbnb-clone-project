@@ -4,6 +4,7 @@ import {
   imageSchema,
   profileSchema,
   propertySchema,
+  reviewSchema,
   validateWithZodSchema,
 } from "./schemas";
 import { redirect } from "next/navigation";
@@ -217,47 +218,79 @@ export const toggleFavoriteAction = async (prevState: {
   }
 };
 
-
 export const fetchAllFavorites = async () => {
-  
   const user = await getClerkUser();
-  const properties = await db.favorite.findMany({where: {profileId: user.id}, select: {property: {select: {id: true, image: true, name:true, tagline:true, country:true, price:true}}}})
- 
-  return properties.map((favorite) => { return favorite.property })
-}
+  const properties = await db.favorite.findMany({
+    where: { profileId: user.id },
+    select: {
+      property: {
+        select: {
+          id: true,
+          image: true,
+          name: true,
+          tagline: true,
+          country: true,
+          price: true,
+        },
+      },
+    },
+  });
 
-export const fetchPropertyDetails = async (propertyId:string) => {
+  return properties.map((favorite) => {
+    return favorite.property;
+  });
+};
 
- const property = await db.property.findUnique({where: {id: propertyId}, include:{profile: true} })
+export const fetchPropertyDetails = async (propertyId: string) => {
+  const property = await db.property.findUnique({
+    where: { id: propertyId },
+    include: { profile: true },
+  });
 
- return property;
-}
+  return property;
+};
 
-
-export const createReviewAction = async () => {
-
- const user = await getClerkUser();
- 
- return {message: 'Property created successfully.'}
-}
-
-export const fetchPropertyReviews = async () => {
-
+export const createReviewAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
   const user = await getClerkUser();
-  
-  return {message: 'Property created successfully.'}
- }
 
- export const fetchPropertyReviewsByUser = async () => {
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedData = validateWithZodSchema(reviewSchema, rawData);
+    await db.review.create({ data: { ...validatedData, profileId: user.id } });
 
+    revalidatePath(`/properties/${validatedData.propertyId}`);
+    return { message: "Review created successfully." };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
+export const fetchPropertyReviews = async (propertyId: string) => {
+  const reviews = await db.review.findMany({
+    where: { propertyId },
+    select: {
+      id: true,
+      rating: true,
+      comment: true,
+      profile: { select: { profileImage: true, firstName: true } },
+    },
+    orderBy: { createdAt: "desc" },
+  }); 
+
+  return reviews;
+};
+
+export const fetchPropertyReviewsByUser = async () => {
   const user = await getClerkUser();
-  
-  return {message: 'Property created successfully.'}
- }
 
- export const deleteReviewAction = async () => {
+  return { message: "Property created successfully." };
+};
 
+export const deleteReviewAction = async () => {
   const user = await getClerkUser();
-  
-  return {message: 'Property created successfully.'}
- }
+
+  return { message: "Property created successfully." };
+};
