@@ -11,7 +11,7 @@ async function ReviewsPage() {
     <EmptyList title="Write some reviews and they will appear here." />
   </div> }
 
-  return <div className="alignment mt-10 md:my-20">
+  return <div className="alignment mt-10 md:my-20 relative">
     <h4 className="head-3 capitalize mb-3">Your Reviews</h4>
     <div className="grid gap-4 md:grid-cols-2 ">
     {reviews.map((review) => {

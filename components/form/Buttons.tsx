@@ -5,6 +5,7 @@ import { TbReload } from "react-icons/tb";
 import { SignInButton } from "@clerk/nextjs";
 import { FaHeart } from "react-icons/fa"
 import { FaRegHeart } from "react-icons/fa6";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 type btnSize = "sm" | "default" | "lg";
 
@@ -56,4 +57,11 @@ export const CardSubmitButton = ({isFavorite}:{isFavorite: boolean}) => {
 const {pending} = useFormStatus();
 
 return <Button type="submit" size='icon' variant='outline' className="p-2 cursor-pointer">{pending ? <TbReload className=" animate-spin" /> : isFavorite ? <FaHeart /> : <FaRegHeart />}</Button>
+}
+
+export const DeleteButton = () => {
+
+  const {pending} = useFormStatus()
+
+return <Button type="submit" variant='outline' size='icon' className="cursor-pointer">{pending ? <TbReload className="animate-spin" /> : <RiDeleteBinLine />}</Button>
 }

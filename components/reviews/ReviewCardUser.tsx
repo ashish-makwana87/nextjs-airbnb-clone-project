@@ -2,6 +2,11 @@ import Image from "next/image";
 import React from "react";
 import ReviewComment from "./ReviewComment";
 import RatingStars from "./RatingStars";
+import FormContainer from "@/components/form/FormContainer";
+import { deleteReviewAction} from "@/utils/actions";
+import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
+import { DeleteButton } from "../form/Buttons";
 
 type UserReviewType = {
   id: string;
@@ -10,9 +15,11 @@ type UserReviewType = {
   property: { image: string; name: string };
 };
 
+
 function ReviewCardUser({ review }: { review: UserReviewType }) {
+
   return (
-    <section className='border rounded-md p-4 shadow'>
+    <section className='border rounded-md p-4 shadow relative'>
       <div className='flex gap-x-4 items-center '>
         <Image
           src={review.property.image}
@@ -27,6 +34,12 @@ function ReviewCardUser({ review }: { review: UserReviewType }) {
           </div>
       </div>
       <ReviewComment comment={review.comment} />
+      <div className=" absolute right-2 top-2">
+      <FormContainer action={deleteReviewAction}>
+       <Input type='hidden' name="reviewId" value={review.id} />
+       <DeleteButton />
+      </FormContainer>
+    </div>
     </section>
   );
 }
