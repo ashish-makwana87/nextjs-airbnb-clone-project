@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Card, CardContent } from '../ui/card'
 import RatingStars from './RatingStars'
+import ReviewComment from './ReviewComment'
 
 type ReviewCardType = {
   id: string,
@@ -19,7 +20,7 @@ function ReviewCard({review}:{review: ReviewCardType}) {
       <RatingStars rating={review.rating} />
       </div>
      </div>
-     <p className='text-sm md:text-base text-muted-foreground capitalize mt-2 md:mt-3'>{review.comment}</p>
+     <ReviewComment comment={review.comment} />
     </section>
   )
 }

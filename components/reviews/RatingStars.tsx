@@ -6,8 +6,8 @@ function RatingStars({rating}:{rating: number}) {
 
   return (
     <div className="flex items-center gap-x-1 mt-1">
-     {stars.map((item) => {
-      return item ? <FaStar className="text-xs text-[#e91d54]" /> : <FaRegStar className="text-xs text-[#e91d54]" />;
+     {stars.map((item, i) => {
+      return item ? <FaStar key={i} className="text-xs text-[#e91d54]" /> : <FaRegStar key={i} className="text-xs text-gray-500" />;
      })}
     </div>
   )
