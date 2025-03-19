@@ -10,7 +10,9 @@ type ReviewCardType = {
       profile: {profileImage: string, firstName: string}
 }
 
+
 function ReviewCard({review}:{review: ReviewCardType}) {
+
   return (
     <section className='border rounded-md p-4 shadow'>
       <div className='flex gap-x-4 items-center '>

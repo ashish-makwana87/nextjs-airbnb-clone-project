@@ -285,8 +285,10 @@ export const fetchPropertyReviews = async (propertyId: string) => {
 
 export const fetchPropertyReviewsByUser = async () => {
   const user = await getClerkUser();
+  
+  const reviews = await db.review.findMany({where: {profileId: user.id}, select: {id:true, rating: true, comment: true, property: {select: {image: true, name: true}}}})
 
-  return { message: "Property created successfully." };
+  return reviews;
 };
 
 export const deleteReviewAction = async () => {

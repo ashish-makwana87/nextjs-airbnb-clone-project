@@ -5,7 +5,7 @@ import ReviewCard from "./ReviewCard"
 async function PropertyReviews({propertyId}:{propertyId: string}) {
   
   const reviews = await fetchPropertyReviews(propertyId)
-  
+   
   if(reviews.length < 1) return null
 
   return <div className="mt-4 md:mt-6">
@@ -13,7 +13,7 @@ async function PropertyReviews({propertyId}:{propertyId: string}) {
     <div className="grid gap-4 md:grid-cols-2 ">
   {reviews.map((review) => {
     
-    return <ReviewCard review={review} />
+    return <ReviewCard key={review.id} review={review} />
   })}
   </div>
   </div>
