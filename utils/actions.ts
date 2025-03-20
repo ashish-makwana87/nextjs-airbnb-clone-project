@@ -315,3 +315,19 @@ export const deleteReviewAction = async (
     return renderError(error);
   }
 };
+
+
+export const fetchPropertyRating = async (propertyId: string) => {
+
+ const ratings = await db.review.groupBy({
+  by:['propertyId'],
+ _avg: {rating: true},
+ _count: {rating: true},
+ where: {propertyId}
+ })
+ 
+console.log(ratings);
+
+
+ return {rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0, count: ratings[0]?._count.rating ?? 0 }; 
+}
