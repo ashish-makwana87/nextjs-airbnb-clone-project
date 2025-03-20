@@ -6,6 +6,7 @@ import { SignInButton } from "@clerk/nextjs";
 import { FaHeart } from "react-icons/fa"
 import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { FiEdit3 } from "react-icons/fi";
 
 type btnSize = "sm" | "default" | "lg";
 
@@ -59,9 +60,28 @@ const {pending} = useFormStatus();
 return <Button type="submit" size='icon' variant='outline' className="p-2 cursor-pointer">{pending ? <TbReload className=" animate-spin" /> : isFavorite ? <FaHeart /> : <FaRegHeart />}</Button>
 }
 
-export const DeleteButton = () => {
+type ActionType = 'edit' | 'delete';
+
+export const IconButton = ({actionType}:{actionType: ActionType}) => {
 
   const {pending} = useFormStatus()
 
-return <Button type="submit" variant='outline' size='icon' className="cursor-pointer">{pending ? <TbReload className="animate-spin" /> : <RiDeleteBinLine />}</Button>
+ const renderIcon = () => {
+
+  switch(actionType) {
+    
+    case('delete'): 
+    return <RiDeleteBinLine />;
+    case('edit'):
+    return <FiEdit3 />;
+    
+    default:
+      const never:never = actionType;
+      throw new Error(`Invalid button type: ${never}`)
+  }
+
+
+ }
+
+return <Button type="submit" variant='outline' size='icon' className="cursor-pointer">{pending ? <TbReload className="animate-spin" /> : renderIcon()}</Button>
 }

@@ -6,7 +6,7 @@ import FormContainer from "@/components/form/FormContainer";
 import { deleteReviewAction} from "@/utils/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
-import { DeleteButton } from "../form/Buttons";
+import { IconButton } from "../form/Buttons";
 
 type UserReviewType = {
   id: string;
@@ -37,7 +37,7 @@ function ReviewCardUser({ review }: { review: UserReviewType }) {
       <div className=" absolute right-2 top-2">
       <FormContainer action={deleteReviewAction}>
        <Input type='hidden' name="reviewId" value={review.id} />
-       <DeleteButton />
+       <IconButton actionType='delete' />
       </FormContainer>
     </div>
     </section>
