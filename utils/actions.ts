@@ -331,3 +331,12 @@ console.log(ratings);
 
  return {rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0, count: ratings[0]?._count.rating ?? 0 }; 
 }
+
+export const reviewExistsByUser = async (propertyId: string) => {
+
+  const user = await getClerkUser()
+  
+  const review = await db.review.findFirst({where: {propertyId, profileId: user.id}, select: {id: true}})
+  
+  return review;
+}

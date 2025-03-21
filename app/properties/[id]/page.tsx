@@ -12,7 +12,7 @@ import PropertyReviews from "@/components/reviews/PropertyReviews";
 import SubmitReview from "@/components/reviews/SubmitReview";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
-import { fetchPropertyDetails } from "@/utils/actions";
+import { fetchPropertyDetails, reviewExistsByUser } from "@/utils/actions";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 
@@ -20,6 +20,7 @@ const DynamicMap = dynamic(() => import('@/components/properties/PropertyMap'), 
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
+  const userReviewExists = await reviewExistsByUser(params.id)
 
   if (!property) redirect("/");
   
@@ -57,7 +58,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         <BookingCalendar />
        </div>
       </section>
-      <SubmitReview propertyId={property.id} />
+      {!userReviewExists && <SubmitReview propertyId={property.id} />}
       <PropertyReviews propertyId={property.id} />
     </section>
   );

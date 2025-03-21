@@ -18,7 +18,7 @@ function SubmitReview({ propertyId }: { propertyId: string }) {
       {isFormVisible && (
         <div className='mt-4 border p-4 md:p-6 rounded-md'>
           <FormContainer action={createReviewAction}>
-            <input type='hidden' name="propertyId" value={propertyId} />
+            <input type='hidden' name='propertyId' value={propertyId} />
             <RatingInput name='rating' />
             <TextAreaInput
               name='comment'
