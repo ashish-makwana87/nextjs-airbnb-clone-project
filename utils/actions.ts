@@ -325,9 +325,6 @@ export const fetchPropertyRating = async (propertyId: string) => {
  _count: {rating: true},
  where: {propertyId}
  })
- 
-console.log(ratings);
-
 
  return {rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0, count: ratings[0]?._count.rating ?? 0 }; 
 }
@@ -340,3 +337,4 @@ export const reviewExistsByUser = async (propertyId: string) => {
   
   return review;
 }
+

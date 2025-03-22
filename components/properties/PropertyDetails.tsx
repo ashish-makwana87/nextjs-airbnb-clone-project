@@ -17,6 +17,6 @@ function PropertyDetails({ details }: { details: DetailsObject }) {
    <p>{beds > 1 ? `${beds} beds |` : `${beds} bed |`}</p>
    <p>{guests > 1 ? `${guests} guests` : `${guests} guest`}</p>
   </div>;
-}
+} 
 
 export default PropertyDetails;

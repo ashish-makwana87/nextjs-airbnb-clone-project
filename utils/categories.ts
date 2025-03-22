@@ -2,11 +2,11 @@ import { IconType } from "react-icons/lib";
 import { MdCabin } from "react-icons/md";
 
 import { TbCaravan, TbTent, TbBuildingCottage } from "react-icons/tb";
-
+import { TbBeach } from "react-icons/tb";
 import { GiWoodCabin, GiMushroomHouse } from "react-icons/gi";
-import { PiWarehouse, PiLighthouse, PiVan } from "react-icons/pi";
-
-import { GoContainer } from "react-icons/go";
+import { PiWarehouse, PiVan } from "react-icons/pi";
+import { RiHome3Line } from "react-icons/ri";
+import { MdOutlineBedroomParent } from "react-icons/md";
 
 type Category = {
   label: CategoryLabel;
@@ -18,11 +18,11 @@ export type CategoryLabel =
   | "tent"
   | "airstream"
   | "cottage"
-  | "container"
+  | "rooms"
   | "caravan"
-  | "tiny"
+  | "beachfront"
   | "magic"
-  | "warehouse"
+  | "apartment"
   | "lodge";
 
 export const categories: Category[] = [
@@ -39,8 +39,8 @@ export const categories: Category[] = [
     icon: TbTent,
   },
   {
-    label: "warehouse",
-    icon: PiWarehouse,
+    label: "apartment",
+    icon: RiHome3Line,
   },
   {
     label: "cottage",
@@ -51,8 +51,8 @@ export const categories: Category[] = [
     icon: GiMushroomHouse,
   },
   {
-    label: "container",
-    icon: GoContainer,
+    label: "beachfront",
+    icon: TbBeach,
   },
   {
     label: "caravan",
@@ -60,8 +60,8 @@ export const categories: Category[] = [
   },
 
   {
-    label: "tiny",
-    icon: PiLighthouse,
+    label: "rooms",
+    icon: MdOutlineBedroomParent,
   },
   {
     label: "lodge",
