@@ -1,7 +1,6 @@
 import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import PropertyRatings from "@/components/card/PropertyRatings";
 import Amenities from "@/components/properties/Amenities";
-import BookingCalendar from "@/components/properties/BookingCalendar";
 import PropertyBreadCrumbs from "@/components/properties/BreadCrumbs";
 import Description from "@/components/properties/Description";
 import ImageContainer from "@/components/properties/ImageContainer";
@@ -17,6 +16,8 @@ import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 
 const DynamicMap = dynamic(() => import('@/components/properties/PropertyMap'), {ssr: false, loading: () => <Skeleton className="h-[40vh] w-full rounded mt-4"/>})
+
+const DynamicCalendar = dynamic(() => import('@/components/Booking/BookingWrapper'), {ssr: false, loading: () => <Skeleton className="h-[20vh] w-full rounded"/>})
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
@@ -55,7 +56,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
        </div>
        {/* calendar */}
        <div className="mt-4 md:mt-0 md:col-span-4">
-        <BookingCalendar />
+        <DynamicCalendar propertyId={property.id} price={property.price} bookings={property.bookings} />
        </div>
       </section>
       {!userReviewExists && <SubmitReview propertyId={property.id} />}

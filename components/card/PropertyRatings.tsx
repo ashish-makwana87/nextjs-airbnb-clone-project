@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 async function PropertyRatings({propertyId, inPage}: {propertyId: string, inPage: boolean}) {
  
  const ratings = await fetchPropertyRating(propertyId)
- 
+
  const averageRatings = ratings.rating;
  const totalReviews = ratings.count; 
  const className = `flex gap-x-1 items-center ${inPage ? 'text-base' : 'text-xs'}`;

@@ -244,7 +244,9 @@ export const fetchAllFavorites = async () => {
 export const fetchPropertyDetails = async (propertyId: string) => {
   const property = await db.property.findUnique({
     where: { id: propertyId },
-    include: { profile: true },
+    include: { profile: true,
+      bookings: {select: {checkIn: true, checkOut: true}}
+     },
   });
 
   return property;
@@ -326,12 +328,12 @@ export const fetchPropertyRating = async (propertyId: string) => {
  where: {propertyId}
  })
 
- return {rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0, count: ratings[0]?._count.rating ?? 0 }; 
+ return {rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0, count: ratings[0]?._count.rating ?? 0, propertyId: ratings[0].propertyId }; 
 }
 
 export const reviewExistsByUser = async (propertyId: string) => {
 
-  const user = await getClerkUser()
+  const user = await getClerkUser();
   
   const review = await db.review.findFirst({where: {propertyId, profileId: user.id}, select: {id: true}})
   
