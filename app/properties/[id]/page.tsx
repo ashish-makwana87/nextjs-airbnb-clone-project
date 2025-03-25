@@ -17,7 +17,7 @@ import { redirect } from "next/navigation";
 
 const DynamicMap = dynamic(() => import('@/components/properties/PropertyMap'), {ssr: false, loading: () => <Skeleton className="h-[40vh] w-full rounded mt-4"/>})
 
-const DynamicCalendar = dynamic(() => import('@/components/Booking/BookingWrapper'), {ssr: false, loading: () => <Skeleton className="h-[20vh] w-full rounded"/>})
+const DynamicCalendar = dynamic(() => import('@/components/Booking/BookingWrapper'), {ssr: false, loading: () => <Skeleton className="h-[30vh] w-full rounded"/>})
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);

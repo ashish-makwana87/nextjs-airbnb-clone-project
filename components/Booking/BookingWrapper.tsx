@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import BookingCalendar from './BookingCalendar';
 import BookingContainer from './BookingContainer';
 
-
 type BookingWrapperProps = {
   propertyId: string, 
   price: number,
