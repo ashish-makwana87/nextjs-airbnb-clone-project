@@ -42,7 +42,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
       <ImageContainer image={property.image} name={property.name} />
       <section className="md:grid md:grid-cols-12 gap-x-12 mt-4 md:mt-6">
         {/* property details */}
-       <div className="md:col-span-8">
+       <div className="md:col-span-7 lg:col-span-8">
         <div className="flex items-center gap-x-2 md:gap-x-4">
        <h4 className="head-4 font-bold">{property.name}</h4>
        <PropertyRatings inPage={true} propertyId={property.id} />
@@ -55,7 +55,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         <DynamicMap code={property.country} />
        </div>
        {/* calendar */}
-       <div className="mt-4 md:mt-0 md:col-span-4">
+       <div className="mt-4 md:mt-0 md:col-span-5 lg:col-span-4">
         <DynamicCalendar propertyId={property.id} price={property.price} bookings={property.bookings} />
        </div>
       </section>
