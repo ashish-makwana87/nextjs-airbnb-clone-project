@@ -11,6 +11,7 @@ import { redirect } from "next/navigation";
 import db from "./db";
 import { revalidatePath } from "next/cache";
 import { uploadImage } from "./supabase";
+import { string } from "zod";
 
 const getClerkUser = async () => {
   const user = await currentUser();
@@ -244,9 +245,10 @@ export const fetchAllFavorites = async () => {
 export const fetchPropertyDetails = async (propertyId: string) => {
   const property = await db.property.findUnique({
     where: { id: propertyId },
-    include: { profile: true,
-      bookings: {select: {checkIn: true, checkOut: true}}
-     },
+    include: {
+      profile: true,
+      bookings: { select: { checkIn: true, checkOut: true } },
+    },
   });
 
   return property;
@@ -318,30 +320,38 @@ export const deleteReviewAction = async (
   }
 };
 
-
 export const fetchPropertyRating = async (propertyId: string) => {
+  const ratings = await db.review.groupBy({
+    by: ["propertyId"],
+    _avg: { rating: true },
+    _count: { rating: true },
+    where: { propertyId },
+  });
 
- const ratings = await db.review.groupBy({
-  by:['propertyId'],
- _avg: {rating: true},
- _count: {rating: true},
- where: {propertyId}
- })
-
- return {rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0, count: ratings[0]?._count.rating ?? 0, propertyId: ratings[0].propertyId }; 
-}
+  return {
+    rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0,
+    count: ratings[0]?._count.rating ?? 0,
+    propertyId: ratings[0].propertyId,
+  };
+};
 
 export const reviewExistsByUser = async (propertyId: string) => {
-
   const user = await getClerkUser();
-  
-  const review = await db.review.findFirst({where: {propertyId, profileId: user.id}, select: {id: true}})
-  
+
+  const review = await db.review.findFirst({
+    where: { propertyId, profileId: user.id },
+    select: { id: true },
+  });
+
   return review;
-}
+};
 
+export const createBookingAction = async (prevState: {
+  propertyId: string;
+  checkIn: Date;
+  checkOut: Date;
+}): Promise<{ message: string }> => {
 
-export const createBookingAction = async() => {
-
-  return 'abc'
-}
+  
+  return { message: "Booking created" };
+};

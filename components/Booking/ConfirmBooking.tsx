@@ -1,5 +1,4 @@
 "use client";
-
 import { useProperty } from "@/utils/store";
 import { SignInButton, useAuth } from "@clerk/nextjs";
 import { Button } from "../ui/button";
