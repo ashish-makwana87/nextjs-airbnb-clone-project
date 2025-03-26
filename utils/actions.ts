@@ -340,3 +340,8 @@ export const reviewExistsByUser = async (propertyId: string) => {
   return review;
 }
 
+
+export const createBookingAction = async() => {
+
+  return 'abc'
+}
