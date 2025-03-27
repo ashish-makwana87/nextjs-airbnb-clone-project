@@ -12,6 +12,7 @@ import db from "./db";
 import { revalidatePath } from "next/cache";
 import { uploadImage } from "./supabase";
 import { string } from "zod";
+import { calculateTotals } from "./calculateTotals";
 
 const getClerkUser = async () => {
   const user = await currentUser();
@@ -331,7 +332,6 @@ export const fetchPropertyRating = async (propertyId: string) => {
   return {
     rating: ratings[0]?._avg.rating?.toFixed(1) ?? 0,
     count: ratings[0]?._count.rating ?? 0,
-    propertyId: ratings[0].propertyId,
   };
 };
 
@@ -351,7 +351,35 @@ export const createBookingAction = async (prevState: {
   checkIn: Date;
   checkOut: Date;
 }): Promise<{ message: string }> => {
+  const user = await getClerkUser();
+  const { propertyId, checkIn, checkOut } = prevState;
 
-  
-  return { message: "Booking created" };
+  const property = await db.property.findUnique({
+    where: { id: propertyId },
+    select: { price: true },
+  });
+
+  if (!property) {
+    return { message: "Property does not exists" };
+  }
+
+  const { totalNights, subTotal, cleaning, service, taxes, orderTotal } =
+    calculateTotals({ checkIn, checkOut, price: property?.price });
+
+  try {
+    await db.booking.create({
+      data: {
+        profileId: user.id,
+        propertyId,
+        orderTotal,
+        totalNights,
+        checkIn,
+        checkOut,
+      },
+    });
+  } catch (error) {
+    return renderError(error);
+  }
+
+  redirect("/bookings");
 };

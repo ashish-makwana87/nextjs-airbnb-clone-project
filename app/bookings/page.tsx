@@ -2,9 +2,8 @@
 
 function BookingsPage() {
   
-
   return (
-    <div>BookingsPage</div>
+    <div>Bookings</div>
   )
 }
 
