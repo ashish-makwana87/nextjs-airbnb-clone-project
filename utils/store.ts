@@ -14,3 +14,4 @@ type PropertyBookingState = {
 export const useProperty = create<PropertyBookingState>(() => {
   return { propertyId: "", price: 0, bookings: [], range: undefined };
 });
+

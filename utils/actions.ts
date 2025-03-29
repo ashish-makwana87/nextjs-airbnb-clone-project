@@ -383,3 +383,4 @@ export const createBookingAction = async (prevState: {
 
   redirect("/bookings");
 };
+
