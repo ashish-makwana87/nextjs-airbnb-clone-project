@@ -39,3 +39,30 @@ export const generateBlockedPeriods = ({
     { from: new Date(0), to: new Date(today.getTime() - 1000 * 60 * 60 * 24) },
   ];
 };
+
+export const generateBlockedDates = (
+  disabledDays: DateRange[]
+): { [key: string]: boolean } => {
+  const blockedDatesObject: { [key: string]: boolean } = {};
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  disabledDays.forEach((range) => {
+    if (!range.from || !range.to) return;
+
+    let currentDate = new Date(range.from);
+    const endDate = new Date(range.to);
+
+    if (endDate < today) return; //  don't include bookings that has start and end dates before today.
+
+    if (currentDate < today) currentDate = new Date(today); //  if the range date is before today then set start date to today. 
+
+    while (currentDate <= endDate) {
+      const dateString = currentDate.toISOString().split("T")[0];
+      blockedDatesObject[dateString] = true;
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+  });
+
+  return blockedDatesObject;
+};
