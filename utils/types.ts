@@ -12,7 +12,6 @@ export type PropertyCardType = {
  price: number, 
 }
 
-
 export type Booking = {
  checkIn: Date,
  checkOut: Date

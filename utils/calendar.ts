@@ -46,6 +46,7 @@ export const generateBlockedDates = (
   const blockedDatesObject: { [key: string]: boolean } = {};
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+  
 
   disabledDays.forEach((range) => {
     if (!range.from || !range.to) return;
@@ -55,10 +56,11 @@ export const generateBlockedDates = (
 
     if (endDate < today) return; //  don't include bookings that has start and end dates before today.
 
-    if (currentDate < today) currentDate = new Date(today); //  if the range date is before today then set start date to today. 
+    if (currentDate < today) currentDate = new Date(today); //  if the range date is before today then set start date to today.
 
     while (currentDate <= endDate) {
       const dateString = currentDate.toISOString().split("T")[0];
+
       blockedDatesObject[dateString] = true;
       currentDate.setDate(currentDate.getDate() + 1);
     }
@@ -67,23 +69,20 @@ export const generateBlockedDates = (
   return blockedDatesObject;
 };
 
+export const generateSelectedDates = (
+  range: DateRange | undefined
+): string[] => {
+  if (!range || !range.from || !range.to) return [];
 
-export const generateSelectedDates = (range: DateRange | undefined): string[] => {
- 
-  
-  if(!range || !range.from || !range.to) return [];
-  
   const selectedDatesArray = [];
   let currentDate = new Date(range.from);
-  const endDate = new Date(range.to); 
-  
-  while(currentDate <= endDate) {
-   
-  const dateString = currentDate.toISOString().split('T')[0]
-  selectedDatesArray.push(dateString);
-  currentDate.setDate(currentDate.getDate() + 1)
+  const endDate = new Date(range.to);
+
+  while (currentDate <= endDate) {
+    const dateString = currentDate.toISOString().split("T")[0];
+    selectedDatesArray.push(dateString);
+    currentDate.setDate(currentDate.getDate() + 1);
   }
 
   return selectedDatesArray;
-}
-
+};

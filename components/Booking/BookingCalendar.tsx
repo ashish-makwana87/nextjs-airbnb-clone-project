@@ -20,26 +20,29 @@ function BookingCalendar() {
     bookings,
     today: currentDate,
   });
-
+  
   const { toast } = useToast();
   const blockedDates = generateBlockedDates(blockedPeriods);
+  
 
   useEffect(() => {
     const selectedDates = generateSelectedDates(range);
 
     const isUnavailableDateSelected = selectedDates.some((date) => {
-      if (blockedDates[date]) {
-        setRange(defaultSelected);
+
+    return blockedDates[date];
+    });
+    
+    if(isUnavailableDateSelected) {
+      setRange(defaultSelected);
         toast({
           description:
             "Some of the dates are already booked. Please select other dates",
         });
-        return true;
-      }
+    }
 
-      return false;
-    });
-  });
+    useProperty.setState({ range });
+  }, [range]);
 
   return (
     <div className='border rounded flex items-center justify-center mb-4'>
