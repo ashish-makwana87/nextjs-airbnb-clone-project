@@ -66,3 +66,24 @@ export const generateBlockedDates = (
 
   return blockedDatesObject;
 };
+
+
+export const generateSelectedDates = (range: DateRange | undefined): string[] => {
+ 
+  
+  if(!range || !range.from || !range.to) return [];
+  
+  const selectedDatesArray = [];
+  let currentDate = new Date(range.from);
+  const endDate = new Date(range.to); 
+  
+  while(currentDate <= endDate) {
+   
+  const dateString = currentDate.toISOString().split('T')[0]
+  selectedDatesArray.push(dateString);
+  currentDate.setDate(currentDate.getDate() + 1)
+  }
+
+  return selectedDatesArray;
+}
+
