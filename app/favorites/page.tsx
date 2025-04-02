@@ -18,7 +18,7 @@ async function FavoritesPage() {
 
   return (
     <section className='alignment py-10 md:py-20'>
-      <h2 className='head-2 capitalize mb-10'>favorite properties</h2>
+      <h2 className='head-2 capitalize mb-6 md:mb-10'>favorite properties</h2>
       <PropertiesList properties={allFavorites} />
     </section>
   );
