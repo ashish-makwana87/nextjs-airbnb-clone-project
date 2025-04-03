@@ -37,20 +37,26 @@ async function BookingsPage() {
           <TableCaption>A list of your recent bookings</TableCaption>
           <TableHeader className='bg-primary border border-primary'>
             <TableRow>
-              <TableHead className='text-white text-center'>
+              <TableHead className='text-white text-center font-semibold md:text-base'>
                 Property Name
               </TableHead>
-              <TableHead className='text-white text-center'>Country</TableHead>
-              <TableHead className='text-white text-center'>Nights</TableHead>
-              <TableHead className='text-white text-center'>Check In</TableHead>
-              <TableHead className='text-white text-center'>
+              <TableHead className='text-white text-center font-semibold md:text-base'>
+                Country
+              </TableHead>
+              <TableHead className='text-white text-center font-semibold md:text-base'>
+                Nights
+              </TableHead>
+              <TableHead className='text-white text-center font-semibold md:text-base'>
+                Check In
+              </TableHead>
+              <TableHead className='text-white text-center font-semibold md:text-base'>
                 Check Out
               </TableHead>
-              <TableHead className='text-white text-center'>
-              Total
+              <TableHead className='text-white text-center font-semibold md:text-base'>
+                Total
               </TableHead>
-              <TableHead className='text-white text-center'>
-                Delete booking
+              <TableHead className='text-white text-center font-semibold md:text-base'>
+                Delete Booking
               </TableHead>
             </TableRow>
           </TableHeader>
@@ -61,14 +67,14 @@ async function BookingsPage() {
                   <TableCell className='text-center'>
                     <Link
                       href={`/properties/${booking.property.id}`}
-                      className=' underline'
+                      className='underline'
                     >
                       {booking.property.name}
                     </Link>
                   </TableCell>
                   <TableCell>
                     <div className='text-center flex justify-center items-center'>
-                    <CountryDetails code={booking.property.country} />
+                      <CountryDetails code={booking.property.country} />
                     </div>
                   </TableCell>
                   <TableCell className=' text-center'>

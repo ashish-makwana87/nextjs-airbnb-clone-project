@@ -412,18 +412,40 @@ export const deleteBookingAction = async (prevState: {
   }
 };
 
-
 export const fetchRentals = async () => {
-  
   const user = await getClerkUser();
-  
-  const rentals = await db.property.findMany({where: {profileId: user.id}})
-}
+
+  const rentals = await db.property.findMany({
+    where: { profileId: user.id },
+    select: { id: true, name: true, price: true },
+  });
+
+  const rentalsWithTotals = await Promise.all(
+    rentals.map(async (rental) => {
+      const totalNightSum = await db.booking.aggregate({
+        where: { propertyId: rental.id },
+        _sum: { totalNights: true },
+      });
+
+      const totalRevenueSum = await db.booking.aggregate({
+        where: { propertyId: rental.id },
+        _sum: { orderTotal: true },
+      });
+
+      return {
+        ...rental,
+        totalNightsSum: totalNightSum._sum.totalNights,
+        totalRevenueSum: totalRevenueSum._sum.orderTotal,
+      };
+    })
+  );
+
+  return rentalsWithTotals;
+};
 
 export const deleteRentalAction = async (prevState: {
   propertyId: string;
 }): Promise<{ message: string }> => {
-
   const user = await getClerkUser();
   const { propertyId } = prevState;
 
@@ -436,5 +458,3 @@ export const deleteRentalAction = async (prevState: {
     return renderError(error);
   }
 };
-
-

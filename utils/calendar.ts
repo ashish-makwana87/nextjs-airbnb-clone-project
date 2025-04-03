@@ -30,8 +30,12 @@ export const generateBlockedPeriods = ({
   today: Date;
 }): DateRange[] => {
   today.setHours(0, 0, 0, 0);
-  const blockedDates = bookings.map((booking) => {
-    return { from: booking.checkIn, to: booking.checkOut };
+  const blockedDates: DateRange[] = bookings.map((booking) => {
+    const adjustedCheckOutDate = new Date(
+      booking.checkOut.getTime() - 1000 * 60 * 60 * 24
+    );
+
+    return { from: booking.checkIn, to: adjustedCheckOutDate };
   });
 
   return [
@@ -46,7 +50,6 @@ export const generateBlockedDates = (
   const blockedDatesObject: { [key: string]: boolean } = {};
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  
 
   disabledDays.forEach((range) => {
     if (!range.from || !range.to) return;
