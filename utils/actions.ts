@@ -411,3 +411,30 @@ export const deleteBookingAction = async (prevState: {
     return renderError(error);
   }
 };
+
+
+export const fetchRentals = async () => {
+  
+  const user = await getClerkUser();
+  
+  const rentals = await db.property.findMany({where: {profileId: user.id}})
+}
+
+export const deleteRentalAction = async (prevState: {
+  propertyId: string;
+}): Promise<{ message: string }> => {
+
+  const user = await getClerkUser();
+  const { propertyId } = prevState;
+
+  try {
+    await db.property.delete({ where: { id: propertyId, profileId: user.id } });
+    revalidatePath("/rentals");
+
+    return { message: "Property deleted successfully." };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
+
