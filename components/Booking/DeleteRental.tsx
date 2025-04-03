@@ -1,4 +1,3 @@
-import React from 'react'
 import FormContainer from '../form/FormContainer'
 import { deleteRentalAction } from '@/utils/actions'
 import { IconButton } from '../form/Buttons'

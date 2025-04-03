@@ -1,4 +1,5 @@
 import DeleteRental from "@/components/Booking/DeleteRental";
+import { IconButton } from "@/components/form/Buttons";
 import EmptyList from "@/components/home/EmptyList";
 import {
   Table,
@@ -29,19 +30,19 @@ async function RentalsPage() {
         <TableHeader className='bg-primary border border-primary'>
           <TableRow>
             <TableHead className='text-white text-center font-semibold md:text-base'>
-              Name
+              Property Name
             </TableHead>
             <TableHead className='text-white text-center font-semibold md:text-base'>
-              Price
+              Nightly Rate
             </TableHead>
             <TableHead className='text-white text-center font-semibold md:text-base'>
-              Total Nights
+              Nights Booked
             </TableHead>
             <TableHead className='text-white text-center font-semibold md:text-base'>
               Total Revenue
             </TableHead>
             <TableHead className='text-white text-center font-semibold md:text-base'>
-              Delete Rental
+              Actions
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -64,7 +65,10 @@ async function RentalsPage() {
                   {formatCurrency(rental.totalRevenueSum)}
                 </TableCell>
                 <TableCell className='text-center'>
+                  <div className="flex justify-center items-center gap-x-3">
+                  <Link href={`rentals/${rental.id}/edit`}><IconButton actionType="edit" /></Link>
                   <DeleteRental propertyId={rental.id}/>
+                  </div>
                 </TableCell>
               </TableRow>
             );

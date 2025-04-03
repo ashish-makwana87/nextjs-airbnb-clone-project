@@ -452,9 +452,32 @@ export const deleteRentalAction = async (prevState: {
   try {
     await db.property.delete({ where: { id: propertyId, profileId: user.id } });
     revalidatePath("/rentals");
-
-    return { message: "Property deleted successfully." };
+    return { message: "Property deleted successfully" };
   } catch (error) {
     return renderError(error);
   }
 };
+
+
+export const fetchRentalDetails = async (propertyId: string) => {
+  
+  const user = await getClerkUser();
+
+  const rental = await db.property.findUnique({where: {id: propertyId, profileId: user.id}})
+  
+
+  return rental; 
+} 
+
+
+export const updatePropertyAction = async (prevState: any, formData: FormData): Promise<{message: string}> => {
+
+
+  return {message: 'Property updated successfully'};
+}
+
+export const updatePropertyImageAction = async (prevState: any, formData: FormData):Promise<{message: string}> => {
+
+
+return {message: 'Image updated successfully'};
+}

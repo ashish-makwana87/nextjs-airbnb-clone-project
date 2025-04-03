@@ -8,6 +8,7 @@ import TextAreaInput from "../form/TextAreaInput";
 import { SubmitButton } from "../form/Buttons";
 
 function SubmitReview({ propertyId }: { propertyId: string }) {
+  
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   return (
