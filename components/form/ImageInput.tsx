@@ -1,11 +1,10 @@
-import React from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 
 
 function ImageInput() {
 
- const name = 'image'
+ const name = 'image';
 
   return (
    <div className='mb-2'>

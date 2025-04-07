@@ -477,7 +477,20 @@ export const updatePropertyAction = async (prevState: any, formData: FormData): 
 }
 
 export const updatePropertyImageAction = async (prevState: any, formData: FormData):Promise<{message: string}> => {
+ 
+  const user = await getClerkUser(); 
+  const image = formData.get('image')
+  const propertyId = formData.get('id') as string;
+  const validatedFile = validateWithZodSchema(imageSchema, {image} )
+  const imageUrl = await uploadImage(validatedFile.image)
 
+  try {
+  await db.property.update({where: {id: propertyId, profileId: user.id}, data: {image: imageUrl}});
+  
+  revalidatePath(`/property/${propertyId}/edit`)
+  return {message: 'Image updated successfully'};
+} catch (error) {
+  return renderError(error); 
+}
 
-return {message: 'Image updated successfully'};
 }

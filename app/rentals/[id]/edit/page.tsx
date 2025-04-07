@@ -1,4 +1,4 @@
-import EditPropertyImage from "@/components/properties/EditPropertyImage";
+import UpdatePropertyImage from "@/components/properties/UpdatePropertyImage";
 import { Separator } from "@/components/ui/separator";
 import { fetchRentalDetails } from "@/utils/actions";
 import Image from "next/image";
@@ -21,7 +21,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
           className='w-20 h-20 md:w-28 md:h-28 rounded object-cover'
         />
         <div className='mt-4'>
-          <EditPropertyImage />
+          <UpdatePropertyImage propertyId={params.id} />
         </div>
         <Separator className='mt-6' />
         <div className="mt-4">
