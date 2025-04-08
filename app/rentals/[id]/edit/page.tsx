@@ -18,7 +18,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
   const rental = await fetchRentalDetails(params.id);
   if (!rental) redirect("/");
 
-  const defaultAmenities: Amenity[] = JSON.parse(rental.amenities);
+  const existingAmenities: Amenity[] = JSON.parse(rental.amenities);
 
   return (
     <section className='alignment my-10 md:my-20'>
@@ -71,7 +71,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
             </div>
             <div className='mt-4 md:mt-6'>
               <h2 className='head-4 mb-4'>Amenities</h2>
-              <AmenitiesInput defaultValue={defaultAmenities} />
+              <AmenitiesInput defaultValue={existingAmenities} />
             </div>
             <SubmitButton text='update property' className='mt-4' />
           </FormContainer>
