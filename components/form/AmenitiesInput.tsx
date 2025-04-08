@@ -23,7 +23,7 @@ function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
 
   return <section>
     <input name="amenities" type="hidden" value={JSON.stringify(selectedAmenities)} />
-    <div className="grid md:grid-cols-2 gap-4 mt-6 mb-4">
+    <div className="grid md:grid-cols-2 gap-4 mt-4 mb-4">
     {selectedAmenities.map((amenity) => {
     
     return <div key={amenity.name} className="flex items-center gap-x-2">

@@ -12,9 +12,9 @@ type TextAreaProps = {
 function TextAreaInput({name, label, defaultValue}: TextAreaProps) {
 
   return (
-    <div className='mb-3'>
+    <div className='mb-2 md:mb-4'>
     <Label htmlFor={name} className='capitalize'>{label}</Label>
-    <Textarea rows={5} id={name} name={name} required defaultValue={defaultValue} className='mt-1 text-sm md:text-base text-muted-foreground' />
+    <Textarea rows={5} id={name} name={name} required defaultValue={defaultValue} className='mt-1 text-sm text-muted-foreground' />
     </div>
   )
 }

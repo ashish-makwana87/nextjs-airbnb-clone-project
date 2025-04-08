@@ -14,9 +14,9 @@ function FormInput({name, label, defaultValue = '', type, placeholder}: FormInpu
 
 
   return (
-   <div className='mb-4'>
+   <div className='mb-2 md:mb-4'>
    <Label htmlFor={name} className='capitalize'>{label || name}</Label>
-   <Input id={name} name={name} type={type} defaultValue={defaultValue} placeholder={placeholder} required className='mt-1 text-sm md:text-base' />
+   <Input id={name} name={name} type={type} defaultValue={defaultValue} placeholder={placeholder} required className='mt-1 text-sm' />
    </div>
   )
 }

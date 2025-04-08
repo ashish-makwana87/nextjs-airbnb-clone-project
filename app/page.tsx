@@ -9,6 +9,7 @@ function HomePage({
 }: {
   searchParams: { category?: string; search?: string };
 }) {
+  
   return (
     <section className='alignment my-10 md:my-12'>
       <CategoriesList

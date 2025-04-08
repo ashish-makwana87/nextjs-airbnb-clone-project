@@ -16,7 +16,7 @@ function CreateRentalPage() {
       <h1 className='head-3 capitalize mb-6'>create rental</h1>
       <div className='border p-8 rounded-md'>
         <FormContainer action={createPropertyAction}>
-          <div className='grid md:grid-cols-2 gap-x-4'>
+          <div className='grid md:grid-cols-2 gap-x-4 gap-y-2 md:gap-y-1'>
             <FormInput
               name='name'
               type='text'
@@ -32,10 +32,9 @@ function CreateRentalPage() {
             <CategoriesInput />
             <PriceInput />
           </div>
-          <TextAreaInput name='description' label='description' />
+          <TextAreaInput name='description' label='description (10 - 100 words)' />
           <div className='grid md:grid-cols-2 gap-x-4 mt-6 mb-4'>
             <CountriesInput />
-            
             <ImageInput />
           </div>
           <div>

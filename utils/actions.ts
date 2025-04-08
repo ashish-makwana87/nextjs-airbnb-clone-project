@@ -486,11 +486,10 @@ export const updatePropertyImageAction = async (prevState: any, formData: FormDa
 
   try {
   await db.property.update({where: {id: propertyId, profileId: user.id}, data: {image: imageUrl}});
-  
+
   revalidatePath(`/property/${propertyId}/edit`)
   return {message: 'Image updated successfully'};
 } catch (error) {
   return renderError(error); 
 }
-
 }

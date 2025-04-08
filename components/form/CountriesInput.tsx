@@ -13,7 +13,7 @@ const name = "country";
 
 function CountriesInput({ defaultValue }: { defaultValue?: string }) {
   return (
-    <div className='mb-3'>
+    <div className='mb-2 md:mb-4'>
       <Label htmlFor={name} className='capitalize'>
         countries
       </Label>
