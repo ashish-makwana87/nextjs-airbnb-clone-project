@@ -2,12 +2,16 @@
 import { amenities, Amenity } from "@/utils/amenities";
 import { useState } from "react";
 import { Checkbox } from "../ui/checkbox";
-import { Label } from "../ui/label";
 
 function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
-  const [selectedAmenities, setSelectedAmenities] = useState<Amenity[]>(
-    defaultValue || amenities
-  );
+  
+  const amenitiesWithIcons = defaultValue?.map(({ name, selected }) => ({
+    name,
+    selected,
+    icon: amenities.find((amenity) => amenity.name === name)!.icon,
+  }));
+
+  const [selectedAmenities, setSelectedAmenities] = useState<Amenity[]>(amenitiesWithIcons || amenities);
 
   const handleChange = (amenity: Amenity) => {
     setSelectedAmenities((prev) => {
@@ -22,18 +26,31 @@ function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
   };
 
   return <section>
-    <input name="amenities" type="hidden" value={JSON.stringify(selectedAmenities)} />
-    <div className="grid md:grid-cols-2 gap-4 mt-4 mb-4">
+  <input
+    type='hidden'
+    name='amenities'
+    value={JSON.stringify(selectedAmenities)}
+  />
+  <div className='grid grid-cols-2 gap-4'>
     {selectedAmenities.map((amenity) => {
-    
-    return <div key={amenity.name} className="flex items-center gap-x-2">
-    <Checkbox id={amenity.name} checked={amenity.selected} onCheckedChange={() => handleChange(amenity)} />
-      <Label htmlFor={amenity.name} className="capitalize flex gap-x-2 items-center" >{amenity.name}<amenity.icon /></Label>
-    </div>
-
+      return (
+        <div key={amenity.name} className='flex items-center space-x-2'>
+          <Checkbox
+            id={amenity.name}
+            checked={amenity.selected}
+            onCheckedChange={() => handleChange(amenity)}
+          />
+          <label
+            htmlFor={amenity.name}
+            className='text-sm font-medium leading-none capitalize flex gap-x-2 items-center'
+          >
+            {amenity.name} <amenity.icon className='w-4 h-4' />
+          </label>
+        </div>
+      );
     })}
-    </div>
-  </section>;
+  </div>
+</section>
 }
 
 export default AmenitiesInput;

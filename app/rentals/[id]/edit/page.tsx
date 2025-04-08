@@ -10,16 +10,15 @@ import TextAreaInput from "@/components/form/TextAreaInput";
 import UpdatePropertyImage from "@/components/properties/UpdatePropertyImage";
 import { Separator } from "@/components/ui/separator";
 import { fetchRentalDetails, updatePropertyAction } from "@/utils/actions";
-import { Amenity } from "@/utils/amenities";
+import { type Amenity } from "@/utils/amenities";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
 async function EditRentalPage({ params }: { params: { id: string } }) {
   const rental = await fetchRentalDetails(params.id);
-
   if (!rental) redirect("/");
 
-  const parsedRentals = JSON.parse(rental.amenities);
+  const defaultAmenities: Amenity[] = JSON.parse(rental.amenities);
 
   return (
     <section className='alignment my-10 md:my-20'>
@@ -70,7 +69,11 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
               <CounterInput detail='beds' defaultValue={rental.beds} />
               <CounterInput detail='baths' defaultValue={rental.baths} />
             </div>
-            <SubmitButton text='update property' className="mt-4" />
+            <div className='mt-4 md:mt-6'>
+              <h2 className='head-4 mb-4'>Amenities</h2>
+              <AmenitiesInput defaultValue={defaultAmenities} />
+            </div>
+            <SubmitButton text='update property' className='mt-4' />
           </FormContainer>
         </div>
       </div>
