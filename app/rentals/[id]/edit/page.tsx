@@ -10,7 +10,7 @@ import TextAreaInput from "@/components/form/TextAreaInput";
 import UpdatePropertyImage from "@/components/properties/UpdatePropertyImage";
 import { Separator } from "@/components/ui/separator";
 import { fetchRentalDetails, updatePropertyAction } from "@/utils/actions";
-import { type Amenity } from "@/utils/amenities";
+import { type Amenity } from "@/utils/newAmenities";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -23,7 +23,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
   return (
     <section className='alignment my-10 md:my-20'>
       <h2 className='head-3 capitalize mb-4 md:mb-8'>Edit Property Info</h2>
-      <div className='border p-4 rounded'>
+      <div className='border p-4 md:p-6 rounded'>
         <Image
           src={rental.image}
           alt={rental.name}
@@ -38,6 +38,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
         <div className='mt-4'>
           <h4 className='head-4 capitalize mb-4'>update property details</h4>
           <FormContainer action={updatePropertyAction}>
+            <input type="hidden" name="id" value={rental.id}/>
             <div className='grid md:grid-cols-2 gap-x-4 gap-y-2 md:gap-y-1'>
               <FormInput
                 type='text'
@@ -73,7 +74,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
               <h2 className='head-4 mb-4'>Amenities</h2>
               <AmenitiesInput defaultValue={existingAmenities} />
             </div>
-            <SubmitButton text='update property' className='mt-4' />
+            <SubmitButton text='update property' className='mt-6 md:mt-8' />
           </FormContainer>
         </div>
       </div>
