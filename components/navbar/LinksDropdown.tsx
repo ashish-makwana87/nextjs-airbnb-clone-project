@@ -47,7 +47,7 @@ function LinksDropdown() {
         <SignedIn>
           {navLinks.map((item) => {
 
-            if (userId !== "user_2uzRK0g1ggJNFqWnRE85qbVWdeZ" && item.label === 'admin') {return null};
+            if (userId !== process.env.ADMIN_USERID && item.label === 'admin') {return null};
 
             return (
               <DropdownMenuItem key={item.label}>

@@ -4,9 +4,9 @@ import { redirect } from "next/navigation";
 
 function AdminPage() {
 
-  const {userId} = auth()
-
- if(userId !== "user_2uzRK0g1ggJNFqWnRE85qbVWdeZ") {redirect('/')}
+  // extra check for admin user
+  const {userId} = auth();
+  if(userId !== process.env.ADMIN_USERID) {redirect('/')}
 
   return (
     <div className='alignment my-10 md:my-20'>AdminPage</div>
