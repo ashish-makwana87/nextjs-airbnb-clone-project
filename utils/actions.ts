@@ -11,7 +11,6 @@ import { redirect } from "next/navigation";
 import db from "./db";
 import { revalidatePath } from "next/cache";
 import { uploadImage } from "./supabase";
-import { string } from "zod";
 import { calculateTotals } from "./calculateTotals";
 
 const getClerkUser = async () => {
@@ -20,6 +19,13 @@ const getClerkUser = async () => {
   if (!user) throw new Error("You must be logged in to access this route.");
   if (!user.privateMetadata.hasProfile) redirect("/profile/create");
 
+  return user;
+};
+
+const getAdminUser = async () => {
+  const user = await getClerkUser();
+
+  if (user.id !== process.env.ADMIN_USERID) redirect("/");
   return user;
 };
 
@@ -458,51 +464,70 @@ export const deleteRentalAction = async (prevState: {
   }
 };
 
-
 export const fetchRentalDetails = async (propertyId: string) => {
-  
   const user = await getClerkUser();
 
-  const rental = await db.property.findUnique({where: {id: propertyId, profileId: user.id}})
-  
+  const rental = await db.property.findUnique({
+    where: { id: propertyId, profileId: user.id },
+  });
 
-  return rental; 
-} 
+  return rental;
+};
 
-
-export const updatePropertyAction = async (prevState: any, formData: FormData): Promise<{message: string}> => {
-  
+export const updatePropertyAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
   const user = await getClerkUser();
-  const propertyId = formData.get('id') as string;
+  const propertyId = formData.get("id") as string;
 
   try {
-    const rawData = Object.fromEntries(formData)
-    const validatedFields = validateWithZodSchema(propertySchema, rawData)
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(propertySchema, rawData);
 
-    await db.property.update({where: {id: propertyId, profileId: user.id}, data: {...validatedFields}});
-    revalidatePath(`rentals/${propertyId}/edit`)
-    return {message: 'Property updated successfully'};
+    await db.property.update({
+      where: { id: propertyId, profileId: user.id },
+      data: { ...validatedFields },
+    });
+    revalidatePath(`rentals/${propertyId}/edit`);
+    return { message: "Property updated successfully" };
   } catch (error) {
-    return renderError(error)
+    return renderError(error);
   }
-}
+};
 
-export const updatePropertyImageAction = async (prevState: any, formData: FormData):Promise<{message: string}> => {
- 
-  const user = await getClerkUser(); 
-  const image = formData.get('image') as File;
-  const propertyId = formData.get('id') as string;
-  const validatedFile = validateWithZodSchema(imageSchema, {image} )
-  const imageUrl = await uploadImage(validatedFile.image)
+export const updatePropertyImageAction = async (
+  prevState: any,
+  formData: FormData
+): Promise<{ message: string }> => {
+  const user = await getClerkUser();
+  const image = formData.get("image") as File;
+  const propertyId = formData.get("id") as string;
+  const validatedFile = validateWithZodSchema(imageSchema, { image });
+  const imageUrl = await uploadImage(validatedFile.image);
 
   try {
-  await db.property.update({where: {id: propertyId, profileId: user.id}, data: {image: imageUrl}});
+    await db.property.update({
+      where: { id: propertyId, profileId: user.id },
+      data: { image: imageUrl },
+    });
 
-  revalidatePath(`/property/${propertyId}/edit`);
+    revalidatePath(`/property/${propertyId}/edit`);
 
-  return {message: 'Image updated successfully'};
+    return { message: "Image updated successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
+
+
+export const fetchStats = async () => {
+ 
+  const user = await getAdminUser()
   
-} catch (error) {
-  return renderError(error); 
-}
+  const totalUsers = await db.profile.count();
+  const totalProperties = await db.property.count();
+  const totalBookings = await db.booking.count()
+
+  return {totalBookings, totalProperties, totalUsers}
 }

@@ -1,8 +1,10 @@
-import React from 'react'
+
 
 function ChartContainer() {
+
+  
   return (
-    <div>ChartContainer</div>
+    <div className="mt-8 md:mt-10">ChartContainer</div>
   )
 }
 
