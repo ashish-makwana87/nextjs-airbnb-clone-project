@@ -1,8 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
 function loading() {
-
-
   return (
     <section className='alignment my-10 md:my-20'>
       <h3 className='head-2 mb-4 md:mb-6'>Your Reviews</h3>

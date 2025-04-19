@@ -13,7 +13,7 @@ async function ProfilePage() {
 
   return (
     <section className='alignment my-10 md:my-20'>
-      <h1 className='head-3 capitalize mb-6'>update profile</h1>
+      <h1 className='head-2 capitalize mb-6'>update profile</h1>
       <div className='border p-8 rounded-md max-w-2xl'>
         <ImageUpdateContainer
           action={updateProfileImageAction}

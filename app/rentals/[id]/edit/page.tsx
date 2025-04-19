@@ -22,7 +22,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
 
   return (
     <section className='alignment my-10 md:my-20'>
-      <h2 className='head-3 capitalize mb-4 md:mb-8'>Edit Property Info</h2>
+      <h2 className='head-2 capitalize mb-4 md:mb-8'>Edit Property Info</h2>
       <div className='border p-4 md:p-6 rounded'>
         <Image
           src={rental.image}

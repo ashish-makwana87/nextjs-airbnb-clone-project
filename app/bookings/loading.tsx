@@ -1,4 +1,3 @@
-"use client";
 import LoadingTable from "@/components/Booking/LoadingTable";
 
 function loading() {

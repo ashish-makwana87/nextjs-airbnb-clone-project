@@ -46,6 +46,9 @@ function LinksDropdown() {
         </SignedOut>
         <SignedIn>
           {navLinks.map((item) => {
+
+            if (userId !== "user_2uzRK0g1ggJNFqWnRE85qbVWdeZ" && item.label === 'admin') {return null};
+
             return (
               <DropdownMenuItem key={item.label}>
                 <Link href={item.href} className='capitalize w-full'>
