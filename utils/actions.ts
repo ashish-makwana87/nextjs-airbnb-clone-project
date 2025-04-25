@@ -39,6 +39,7 @@ export const createProfileAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
+
   try {
     const user = await currentUser();
 
@@ -341,15 +342,16 @@ export const fetchPropertyRating = async (propertyId: string) => {
   };
 };
 
-export const reviewExistsByUser = async (propertyId: string) => {
-  const user = await getClerkUser();
-
-  const review = await db.review.findFirst({
-    where: { propertyId, profileId: user.id },
-    select: { id: true },
-  });
-
-  return review;
+export const reviewExistsByUser = async ({propertyId, userId}:{propertyId: string, userId: string | null}) => {
+ 
+  if(userId) {
+    const review = await db.review.findFirst({
+      where: { propertyId, profileId: userId },
+      select: { id: true },
+    });
+  
+    return review ? true : false;
+  } else {return false;}
 };
 
 export const createBookingAction = async (prevState: {

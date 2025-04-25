@@ -1,5 +1,6 @@
 import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import PropertyRatings from "@/components/card/PropertyRatings";
+import { ReviewSignInButton } from "@/components/form/Buttons";
 import Amenities from "@/components/properties/Amenities";
 import PropertyBreadCrumbs from "@/components/properties/BreadCrumbs";
 import Description from "@/components/properties/Description";
@@ -12,22 +13,39 @@ import SubmitReview from "@/components/reviews/SubmitReview";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchPropertyDetails, reviewExistsByUser } from "@/utils/actions";
+import { auth } from "@clerk/nextjs/server";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 
-const DynamicMap = dynamic(() => import('@/components/properties/PropertyMap'), {ssr: false, loading: () => <Skeleton className="h-[40vh] w-full rounded mt-4"/>})
+const DynamicMap = dynamic(
+  () => import("@/components/properties/PropertyMap"),
+  {
+    ssr: false,
+    loading: () => <Skeleton className='h-[40vh] w-full rounded mt-4' />,
+  }
+);
 
-const DynamicCalendar = dynamic(() => import('@/components/Booking/BookingWrapper'), {ssr: false, loading: () => <Skeleton className="h-[30vh] w-full rounded"/>})
+const DynamicCalendar = dynamic(
+  () => import("@/components/Booking/BookingWrapper"),
+  {
+    ssr: false,
+    loading: () => <Skeleton className='h-[30vh] w-full rounded' />,
+  }
+);
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
-  const userReviewExists = await reviewExistsByUser(params.id)
+  const { userId } = auth();
+  const reviewExists = await reviewExistsByUser({propertyId: params.id, userId})
 
   if (!property) redirect("/");
-  
-  const {bedrooms, beds, baths, guests} = property;
-  const details = {bedrooms, baths, beds, guests}
-  const userInfo = {firstName: property.profile.firstName, image: property.profile.profileImage}
+
+  const { bedrooms, beds, baths, guests } = property;
+  const details = { bedrooms, baths, beds, guests };
+  const userInfo = {
+    firstName: property.profile.firstName,
+    image: property.profile.profileImage,
+  };
 
   return (
     <section className='alignment my-10 md:my-20'>
@@ -40,26 +58,30 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         </div>
       </header>
       <ImageContainer image={property.image} name={property.name} />
-      <section className="md:grid md:grid-cols-12 gap-x-12 mt-4 md:mt-6">
+      <section className='md:grid md:grid-cols-12 gap-x-12 mt-4 md:mt-6'>
         {/* property details */}
-       <div className="md:col-span-7 lg:col-span-8">
-        <div className="flex items-center gap-x-2 md:gap-x-4">
-       <h4 className="head-4 font-bold">{property.name}</h4>
-       <PropertyRatings inPage={true} propertyId={property.id} />
+        <div className='md:col-span-7 lg:col-span-8'>
+          <div className='flex items-center gap-x-2 md:gap-x-4'>
+            <h4 className='head-4 font-bold'>{property.name}</h4>
+            <PropertyRatings inPage={true} propertyId={property.id} />
+          </div>
+          <PropertyDetails details={details} />
+          <UserInfo userInfo={userInfo} />
+          <Separator className='mt-4' />
+          <Description title='description' description={property.description} />
+          <Amenities amenities={property.amenities} />
+          <DynamicMap code={property.country} />
         </div>
-        <PropertyDetails details={details} />
-        <UserInfo userInfo={userInfo} />
-        <Separator className="mt-4" />
-        <Description title="description" description={property.description} />
-        <Amenities amenities={property.amenities} />
-        <DynamicMap code={property.country} />
-       </div>
-       {/* calendar */}
-       <div className="mt-4 md:mt-0 md:col-span-5 lg:col-span-4">
-        <DynamicCalendar propertyId={property.id} price={property.price} bookings={property.bookings} />
-       </div>
+        {/* calendar */}
+        <div className='mt-4 md:mt-0 md:col-span-5 lg:col-span-4'>
+          <DynamicCalendar
+            propertyId={property.id}
+            price={property.price}
+            bookings={property.bookings}
+          />
+        </div>
       </section>
-      {!userReviewExists && <SubmitReview propertyId={property.id} />}
+      {userId && <SubmitReview propertyId={property.id} reviewExists={reviewExists} />}
       <PropertyReviews propertyId={property.id} />
     </section>
   );
