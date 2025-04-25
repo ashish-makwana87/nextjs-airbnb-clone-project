@@ -1,6 +1,5 @@
 import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
 import PropertyRatings from "@/components/card/PropertyRatings";
-import { ReviewSignInButton } from "@/components/form/Buttons";
 import Amenities from "@/components/properties/Amenities";
 import PropertyBreadCrumbs from "@/components/properties/BreadCrumbs";
 import Description from "@/components/properties/Description";
@@ -36,7 +35,9 @@ const DynamicCalendar = dynamic(
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
   const { userId } = auth();
-  const reviewExists = await reviewExistsByUser({propertyId: params.id, userId})
+
+  const isNotOwner = property?.profile.clerkId !== userId;
+  const reviewDoesNotExists = userId && isNotOwner && !(await reviewExistsByUser({propertyId: params.id, userId}))
 
   if (!property) redirect("/");
 
@@ -81,7 +82,7 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
           />
         </div>
       </section>
-      {userId && <SubmitReview propertyId={property.id} reviewExists={reviewExists} />}
+      {reviewDoesNotExists && <SubmitReview propertyId={property.id} />}
       <PropertyReviews propertyId={property.id} />
     </section>
   );

@@ -342,16 +342,13 @@ export const fetchPropertyRating = async (propertyId: string) => {
   };
 };
 
-export const reviewExistsByUser = async ({propertyId, userId}:{propertyId: string, userId: string | null}) => {
+export const reviewExistsByUser = async ({propertyId, userId}:{propertyId: string, userId: string}) => {
  
-  if(userId) {
     const review = await db.review.findFirst({
-      where: { propertyId, profileId: userId },
-      select: { id: true },
+      where: { propertyId, profileId: userId }
     });
   
-    return review ? true : false;
-  } else {return false;}
+    return review;
 };
 
 export const createBookingAction = async (prevState: {

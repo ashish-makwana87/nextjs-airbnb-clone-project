@@ -58,14 +58,6 @@ export const CardSignInButton = () => {
   );
 };
 
-export const ReviewSignInButton = () => {
-
-  return (
-    <SignInButton mode='modal'>
-      <button className="bg-primary p-2">Please sign in</button>
-    </SignInButton>
-  );
-};
 
 export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
   const { pending } = useFormStatus();
