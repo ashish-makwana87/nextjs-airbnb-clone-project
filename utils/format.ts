@@ -12,14 +12,18 @@ export const formatCurrency = (amount: number | null) => {
 };
 
 
-export const formatDate = (date: Date) => {
+export const formatDate = (date: Date, onlyMonth?:boolean) => {
+ 
+  const options:Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+  }
+ 
+  if(!onlyMonth) {
+    options.day = 'numeric'
+  }
 
- return new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
- }).format(date);
-
+ return new Intl.DateTimeFormat('en-US', options).format(date);
 }
 
 

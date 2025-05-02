@@ -8,10 +8,39 @@
 https://nextjs-airbnb-clone-project.vercel.app/
 
 **Key Features:**
-- 
+- Secure login with Clerk Auth. Profile creation and profile update. 
+- Booking calendar with blocked dates for existing bookings.
+- Property filter based on property type. 
+- Add to favorite and write review functionality. 
+- Edit rental and delete rental functionality. 
+- Booking stats for user's own rentals (total revenue and total night's booked)
+- Admin only dashboard to preview application stats.
+- Hosted on Vercel
 
-**Home Page**
 
-<a href='' target='_blank'>
-<img src='' width='700' alt='project image'>
+**At Glance**
+
+<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
+<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a1_earbiu.jpg' width='700' alt='project image'>
 </a>
+
+
+<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
+<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593675/a2_e5wjmt.jpg' width='700' alt='project image'>
+</a>
+
+
+<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
+<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a3_xuubej.jpg' width='700' alt='project image'>
+</a>
+
+
+<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
+<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745594570/a4_xmul5k.jpg' width='700' alt='project image'>
+</a>
+
+
+<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
+<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a5_dsqutu.jpg' width='700' alt='project image'>
+</a>
+

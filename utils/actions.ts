@@ -12,6 +12,8 @@ import db from "./db";
 import { revalidatePath } from "next/cache";
 import { uploadImage } from "./supabase";
 import { calculateTotals } from "./calculateTotals";
+import { formatDate } from "./format";
+import { count } from "console";
 
 const getClerkUser = async () => {
   const user = await currentUser();
@@ -39,7 +41,6 @@ export const createProfileAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-
   try {
     const user = await currentUser();
 
@@ -342,13 +343,18 @@ export const fetchPropertyRating = async (propertyId: string) => {
   };
 };
 
-export const reviewExistsByUser = async ({propertyId, userId}:{propertyId: string, userId: string}) => {
- 
-    const review = await db.review.findFirst({
-      where: { propertyId, profileId: userId }
-    });
-  
-    return review;
+export const reviewExistsByUser = async ({
+  propertyId,
+  userId,
+}: {
+  propertyId: string;
+  userId: string;
+}) => {
+  const review = await db.review.findFirst({
+    where: { propertyId, profileId: userId },
+  });
+
+  return review;
 };
 
 export const createBookingAction = async (prevState: {
@@ -519,14 +525,42 @@ export const updatePropertyImageAction = async (
   }
 };
 
-
 export const fetchStats = async () => {
- 
-  const user = await getAdminUser()
-  
+  const user = await getAdminUser();
+
   const totalUsers = await db.profile.count();
   const totalProperties = await db.property.count();
-  const totalBookings = await db.booking.count()
+  const totalBookings = await db.booking.count();
 
-  return {totalBookings, totalProperties, totalUsers}
-}
+  return { totalBookings, totalProperties, totalUsers };
+};
+
+export const fetchChartsData = async () => {
+  const user = await getAdminUser();
+
+  const date = new Date();
+  date.setMonth(date.getMonth() - 6);
+  const sixMonthsAgo = date;
+
+  const bookings = await db.booking.findMany({
+    where: { createdAt: { gte: sixMonthsAgo } },
+    orderBy: { createdAt: "asc" },
+  });
+
+  const bookingsPerMonth = bookings.reduce((total, current) => {
+    const month = formatDate(current.createdAt, true);
+ 
+   const existingMonth = total.find((item) => item.month === month); 
+   
+   if(!existingMonth) {total.push({month: month, count: 1})} else {
+    existingMonth.count = existingMonth.count + 1; 
+   } 
+
+    return total;
+
+  }, [] as Array<{month:string, count:number}>);
+  
+  console.log(bookingsPerMonth)
+
+  return bookingsPerMonth;
+};

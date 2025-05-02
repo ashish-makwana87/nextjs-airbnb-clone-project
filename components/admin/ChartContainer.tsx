@@ -1,8 +1,10 @@
+import { fetchChartsData } from "@/utils/actions"
 
 
-function ChartContainer() {
+ async function ChartContainer() {
+ 
+  const bookingsData = await fetchChartsData()
 
-  
   return (
     <div className="mt-8 md:mt-10">ChartContainer</div>
   )
