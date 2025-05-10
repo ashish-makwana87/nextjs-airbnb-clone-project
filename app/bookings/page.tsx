@@ -31,7 +31,7 @@ async function BookingsPage() {
 
   return (
     <section className='alignment my-10 md:my-20'>
-      <h4 className='head-2 capitalize mb-6 md:mb-10'>Your Bookings</h4>
+      <h1 className='head-1 capitalize mb-6 md:mb-10'>Your Bookings</h1>
       <div>
         <Table>
           <TableCaption>A list of your recent bookings</TableCaption>

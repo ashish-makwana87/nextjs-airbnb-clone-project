@@ -8,14 +8,10 @@
   }
 
   .head-1 {
-    @apply text-2xl font-bold md:text-3xl lg:text-4xl tracking-wide;
-  }
-
-  .head-2 {
     @apply text-2xl font-semibold tracking-wide capitalize md:text-3xl;
   }
 
-  .head-3 {
+  .head-2 {
     @apply text-xl font-semibold tracking-wide capitalize md:text-2xl;
   }
 

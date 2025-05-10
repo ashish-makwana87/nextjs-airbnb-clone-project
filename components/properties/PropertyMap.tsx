@@ -22,7 +22,7 @@ function PropertyMap({code}:{code:string}) {
 
   return <section className="mt-4">
    <div className="mb-4">
-   <h4 className="head-5 mb-1 capitalize">Where you will be staying</h4>
+   <h5 className="head-5 mb-1 capitalize">Where you will be staying</h5>
    <CountryDetails code={code} />
    </div>
    <MapContainer scrollWheelZoom={false} zoomControl={false} center={location || defaultLocation} zoom={7} className="h-[50vh] rounded-md z-0 relative">

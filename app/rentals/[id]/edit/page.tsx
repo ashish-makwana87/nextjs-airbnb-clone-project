@@ -22,7 +22,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
 
   return (
     <section className='alignment my-10 md:my-20'>
-      <h2 className='head-2 capitalize mb-4 md:mb-8'>Edit Property Info</h2>
+      <h1 className='head-1 capitalize mb-4 md:mb-8'>Edit Property Info</h1>
       <div className='border p-4 md:p-6 rounded'>
         <Image
           src={rental.image}
@@ -64,7 +64,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
               />
             </div>
             <div className='mt-4 md:mt-6'>
-              <h2 className='head-4 mb-4'>Accommodation details</h2>
+              <h4 className='head-4 mb-4'>Accommodation details</h4>
               <CounterInput detail='guests' defaultValue={rental.guests} />
               <CounterInput detail='bedrooms' defaultValue={rental.bedrooms} />
               <CounterInput detail='beds' defaultValue={rental.beds} />

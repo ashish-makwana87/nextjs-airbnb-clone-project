@@ -12,7 +12,7 @@ function Description({description, title}:{description: string, title:string}) {
 
   return (
     <div className="mt-4">
-    <h4 className="head-5 capitalize mb-2">{title}</h4>
+    <h5 className="head-5 capitalize mb-2">{title}</h5>
     <p className="text-muted-foreground text-base ">{isFullDescriptionShown ? description : isLongDescription ? `${shortDescription}...` : description}</p>
     {isLongDescription && <Button variant='link' onClick={() => setIsFullDescriptionShown(!isFullDescriptionShown)} className="p-0 capitalize" >{isFullDescriptionShown ? 'show less' : 'show more'}</Button>}
     </div>

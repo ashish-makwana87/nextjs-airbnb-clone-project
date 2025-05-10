@@ -9,8 +9,8 @@ function StatsCard({ title, value }: StatsCardProps) {
 
   return (
     <section className='p-6 md:p-8 flex justify-between items-center bg-secondary rounded-md'>
-      <h6 className='head-3'>{title}</h6>
-      <h6 className='head-2 font-bold text-primary'>{value}</h6>
+      <h2 className='head-2'>{title}</h2>
+      <h3 className='font-bold text-primary text-2xl tracking-wide capitalize md:text-3xl'>{value}</h3>
     </section>
   );
 }

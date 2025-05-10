@@ -12,7 +12,7 @@ function Amenities({ amenities }: { amenities: string }) {
 
   return (
     <div className='mt-4'>
-      <h4 className='head-5'>What this place offers</h4>
+      <h5 className='head-5'>What this place offers</h5>
       <div className='mt-2 grid md:grid-cols-2 gap-y-2 gap-x-4'>
         {amenitiesList.map((amenity) => {
           if (!amenity.selected) return null;

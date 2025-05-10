@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 function loading() {
   return (
     <section className='alignment my-10 md:my-20'>
-      <h3 className='head-2 mb-4 md:mb-6'>Your Reviews</h3>
+      <h1 className='head-1 mb-4 md:mb-6'>Your Reviews</h1>
       <div className='grid gap-4 md:grid-cols-2'>
         <ReviewSkeletonCard />
         <ReviewSkeletonCard />

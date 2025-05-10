@@ -30,7 +30,7 @@ function CounterInput({
       <CardHeader className='flex flex-col gap-y-4 gap-x-2'>
         <div className='flex items-center justify-between flex-wrap'>
           <div className='flex flex-col'>
-            <h2 className='font-medium capitalize'>{detail}</h2>
+            <h4 className='font-medium capitalize'>{detail}</h4>
             <p className='text-muted-foreground text-sm'>
               Specify the number of {detail}
             </p>

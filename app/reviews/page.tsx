@@ -12,8 +12,8 @@ async function ReviewsPage() {
   </div> }
 
   return <div className="alignment my-10 md:my-20 relative">
-    <h4 className="head-2 capitalize mb-4 md:mb-6">Your Reviews</h4>
-    <div className="grid gap-4 md:grid-cols-2 ">
+    <h1 className="head-1 capitalize mb-4 md:mb-6">Your Reviews</h1>
+    <div className="grid gap-4 md:grid-cols-2">
     {reviews.map((review) => {
       return <ReviewCardUser key={review.id} review={review} />
     })}

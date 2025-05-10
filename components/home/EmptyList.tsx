@@ -7,7 +7,7 @@ function EmptyList({title = 'No items in the list', message = 'Keep exploring ou
 
   return (
     <div className={`${className} mt-4`}>
-    <h2 className='head-3 capitalize'>{title}</h2>
+    <h1 className='head-1 capitalize'>{title}</h1>
     <p className='mt-2 text-lg'>{message}</p>
     <Button asChild className=' capitalize text-base mt-6' size='lg'>
      <Link href='/'>{btnText}</Link> 

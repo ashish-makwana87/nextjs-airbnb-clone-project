@@ -1,6 +1,6 @@
 ## NextJs Airbnb Clone Project
 
-- Built from scratch (No use of any external property/rental APIs) 
+- Built from scratch (No use of any external rental APIs) 
 
 - Created with Clerk Auth, Prisma, Supabase, MongoDB, React, Zod, TypeScript, Tailwind CSS, and Shadcn.
 
@@ -8,14 +8,15 @@
 https://nextjs-airbnb-clone-project.vercel.app/
 
 **Key Features:**
-- Secure login with Clerk Auth. Profile creation and profile update. 
+- Secure login with Clerk Auth. Middleware setup to define public routes and admin only routes. 
+- Profile creation and profile update (profile image, username, and name) functionality. 
 - Booking calendar with blocked dates for existing bookings.
 - Property filter based on property type. 
 - Add to favorite and write review functionality. 
 - Edit rental and delete rental functionality. 
 - Booking stats for user's own rentals (total revenue and total night's booked)
-- Admin only dashboard to preview application stats.
-- Hosted on Vercel
+- Admin only dashboard to preview application stats and chart displaying last 6 months of booking history.
+- Hosted on Vercel.
 
 
 **At Glance**

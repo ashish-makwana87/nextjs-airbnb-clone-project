@@ -4,7 +4,7 @@ function loading() {
   
   return (
     <div className='alignment my-10 md:my-20'>
-      <h3 className='head-2 mb-6 md:mb-10'>Your Bookings</h3>
+      <h1 className='head-1 mb-6 md:mb-10'>Your Bookings</h1>
       <LoadingTable rows={8} />
     </div>
   );

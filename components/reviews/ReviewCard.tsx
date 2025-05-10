@@ -18,7 +18,7 @@ function ReviewCard({review}:{review: ReviewCardType}) {
       <div className='flex gap-x-4 items-center '>
      <Image src={review.profile.profileImage} alt={review.id} width={300} height={300} className='h-12 w-12 md:w-14 md:h-14 rounded-full object-cover' />
      <div>
-      <h5 className='head-6 font-medium capitalize'>{review.profile.firstName}</h5>
+      <h6 className='head-6 font-medium capitalize'>{review.profile.firstName}</h6>
       <RatingStars rating={review.rating} />
       </div>
      </div>

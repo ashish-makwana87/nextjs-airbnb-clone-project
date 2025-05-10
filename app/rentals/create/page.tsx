@@ -13,7 +13,7 @@ import { createPropertyAction } from "@/utils/actions";
 function CreateRentalPage() {
   return (
     <section className='alignment py-10 md:py-20'>
-      <h1 className='head-2 capitalize mb-6'>create rental</h1>
+      <h1 className='head-1 capitalize mb-6'>create rental</h1>
       <div className='border p-8 rounded-md'>
         <FormContainer action={createPropertyAction}>
           <div className='grid md:grid-cols-2 gap-x-4 gap-y-2 md:gap-y-1'>
@@ -45,7 +45,7 @@ function CreateRentalPage() {
             <CounterInput detail='baths' />
           </div>
           <div className='mt-6 md:mt-8'>
-            <h2 className='head-4 mb-4'>Amenities</h2>
+            <h4 className='head-4 mb-4'>Amenities</h4>
             <AmenitiesInput />
           </div>
           <SubmitButton text='create rental' className="mt-4 md:mt-6" />

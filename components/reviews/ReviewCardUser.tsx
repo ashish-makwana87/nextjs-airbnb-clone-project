@@ -29,7 +29,7 @@ function ReviewCardUser({ review }: { review: UserReviewType }) {
           className='h-12 w-12 md:w-14 md:h-14 rounded-full object-cover'
           />
           <div>
-           <h5 className='head-6 font-medium capitalize'>{review.property.name}</h5>
+           <h6 className='head-6 font-medium capitalize'>{review.property.name}</h6>
            <RatingStars rating={review.rating} />
           </div>
       </div>

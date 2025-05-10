@@ -24,7 +24,7 @@ async function RentalsPage() {
 
   return (
     <section className='alignment my-10 md:my-20'>
-      <h3 className='head-2 mb-6 md:mb-10'>Your Rentals</h3>
+      <h1 className='head-1 mb-6 md:mb-10'>Your Rentals</h1>
       <Table>
         <TableCaption>A list of all your rentals</TableCaption>
         <TableHeader className='bg-primary border border-primary'>
