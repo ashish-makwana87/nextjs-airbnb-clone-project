@@ -21,7 +21,7 @@ function HomePage({
         category={searchParams.category}
         search={searchParams.search}
         />
-        </Suspense>
+      </Suspense>
     </section>
   );
 }
