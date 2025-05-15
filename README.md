@@ -19,29 +19,43 @@ https://nextjs-airbnb-clone-project.vercel.app/
 - Hosted on Vercel.
 
 
-**At Glance**
+**Home**
 
 <a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
 <img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a1_earbiu.jpg' width='700' alt='project image'>
 </a>
 
 
+**Property Page**
+
 <a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
 <img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593675/a2_e5wjmt.jpg' width='700' alt='project image'>
 </a>
 
+
+**Booking Calendar**
 
 <a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
 <img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a3_xuubej.jpg' width='700' alt='project image'>
 </a>
 
 
+**Rentals Page**
+
 <a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
 <img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745594570/a4_xmul5k.jpg' width='700' alt='project image'>
 </a>
 
 
+**Bookings Page**
+
 <a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
 <img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a5_dsqutu.jpg' width='700' alt='project image'>
 </a>
 
+
+**Admin Page**
+
+<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
+<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1747328677/a6_pyc1ip.jpg' width='700' alt='project image'>
+</a>
