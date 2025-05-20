@@ -1,4 +1,4 @@
-## NextJs Airbnb Clone Project
+## Next.js Airbnb Clone Project
 
 - Built from scratch (No use of any external rental APIs) 
 

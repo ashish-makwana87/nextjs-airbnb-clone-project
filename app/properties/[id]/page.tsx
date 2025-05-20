@@ -14,7 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { fetchPropertyDetails, reviewExistsByUser } from "@/utils/actions";
 import { auth } from "@clerk/nextjs/server";
 import dynamic from "next/dynamic";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 const DynamicMap = dynamic(
   () => import("@/components/properties/PropertyMap"),
@@ -34,12 +34,15 @@ const DynamicCalendar = dynamic(
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
+
+  if(!property) {
+    notFound()
+  }
+
   const { userId } = auth();
 
   const isNotOwner = property?.profile.clerkId !== userId;
   const reviewDoesNotExists = userId && isNotOwner && !(await reviewExistsByUser({propertyId: params.id, userId}))
-
-  if (!property) redirect("/");
 
   const { bedrooms, beds, baths, guests } = property;
   const details = { bedrooms, baths, beds, guests };

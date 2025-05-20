@@ -20,8 +20,11 @@ function AmenitiesInput({ defaultValue }: { defaultValue?: Amenity[] }) {
   );
 
   const handleChange = (amenity: Amenity) => {
+    
     setSelectedAmenities((prev) => {
+
       return prev.map((a) => {
+
         if (a.name === amenity.name) {
           return { ...a, selected: !a.selected };
         }
