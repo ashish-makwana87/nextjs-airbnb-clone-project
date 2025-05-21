@@ -87,9 +87,7 @@ export const fetchProfileAction = async () => {
   const user = await getClerkUser();
   const profile = await db.profile.findUnique({ where: { clerkId: user.id } });
 
-  if(profile) throw new Error(`you don't have any profile yet.`)
-
-  // if (!profile) redirect("/profile/create");
+  if (!profile) redirect("/profile/create");
   
   return profile;
 };

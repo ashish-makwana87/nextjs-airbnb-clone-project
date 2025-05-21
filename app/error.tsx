@@ -1,7 +1,7 @@
 'use client' // Error boundaries must be Client Components
  
-import { useEffect } from 'react'
-import AllErrors from "@/components/errors/AllErrors"
+import { useEffect } from 'react';
+import CustomErrorHandler from '@/components/errors/CustomErrorHandler'
 
 export default function Error({
   error,
@@ -17,7 +17,7 @@ export default function Error({
  
   return (
     <div>
-      <AllErrors error={error} reset={reset} />
+      <CustomErrorHandler error={error} reset={reset} />
     </div>
   )
 }
