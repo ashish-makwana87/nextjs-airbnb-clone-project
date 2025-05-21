@@ -1,20 +1,26 @@
 import EmptyList from "@/components/home/EmptyList";
 import PropertiesList from "@/components/home/PropertiesList";
 import { fetchAllFavorites } from "@/utils/actions";
+import { redirect } from "next/navigation";
 
 async function FavoritesPage() {
   const allFavorites = await fetchAllFavorites();
+  
 
-  if (allFavorites.length === 0) {
-    return (
-      <section className='alignment my-10 md:my-20'>
-        <EmptyList
-          title='No properties found...'
-          message='Add some properties as favorites to appear here.'
-        />
-      </section>
-    );
-  }
+  if(!allFavorites) {throw new Error('ooopppppsssssss')}
+  
+
+  // if (allFavorites.length === 0 ||) {
+
+  //   return (
+  //     <section className='alignment my-10 md:my-20'>
+  //       <EmptyList
+  //         title='No properties found...'
+  //         message='Add some properties as favorites to appear here.'
+  //       />
+  //     </section>
+  //   );
+  // }
 
   return (
     <section className='alignment py-10 md:py-20'>

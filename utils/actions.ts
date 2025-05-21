@@ -87,7 +87,10 @@ export const fetchProfileAction = async () => {
   const user = await getClerkUser();
   const profile = await db.profile.findUnique({ where: { clerkId: user.id } });
 
-  if (!profile) redirect("/profile/create");
+  if(profile) throw new Error(`you don't have any profile yet.`)
+
+  // if (!profile) redirect("/profile/create");
+  
   return profile;
 };
 
@@ -229,26 +232,29 @@ export const toggleFavoriteAction = async (prevState: {
 };
 
 export const fetchAllFavorites = async () => {
-  const user = await getClerkUser();
-  const properties = await db.favorite.findMany({
-    where: { profileId: user.id },
-    select: {
-      property: {
-        select: {
-          id: true,
-          image: true,
-          name: true,
-          tagline: true,
-          country: true,
-          price: true,
-        },
-      },
-    },
-  });
 
-  return properties.map((favorite) => {
-    return favorite.property;
-  });
+
+  return null;
+  // const user = await getClerkUser();
+  // const properties = await db.favorite.findMany({
+  //   where: { profileId: user.id },
+  //   select: {
+  //     property: {
+  //       select: {
+  //         id: true,
+  //         image: true,
+  //         name: true,
+  //         tagline: true,
+  //         country: true,
+  //         price: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  // return properties.map((favorite) => {
+  //   return favorite.property;
+  // });
 };
 
 export const fetchPropertyDetails = async (propertyId: string) => {
