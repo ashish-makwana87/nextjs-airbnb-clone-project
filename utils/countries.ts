@@ -1,13 +1,13 @@
 import countries from "world-countries";
 
-export const formattedCountries = countries.map((item) => {
+export const formattedCountries = countries.map((country) => {
 
   return {
-    code: item.cca2,
-    name: item.name.common,
-    flag: item.flag,
-    location: item.latlng,
-    region: item.region,
+    code: country.cca2,
+    name: country.name.common,
+    flag: country.flag,
+    location: country.latlng,
+    region: country.region,
   };
 });
 

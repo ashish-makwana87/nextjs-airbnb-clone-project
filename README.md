@@ -1,57 +1,20 @@
-## Next.js Airbnb Clone Project
-
-- Built from scratch (No use of any external rental APIs)
-
-- Created with Clerk Auth, Prisma, Supabase, MongoDB, React, Zod, TypeScript, Tailwind CSS, and Shadcn.
+## Next.js Property Rental Project
 
 **Project URL:**
-https://nextjs-airbnb-clone-project.vercel.app/
+https://nextjs-property-rental-project.vercel.app/
 
-**Key Features:**
+**Key Features**
 
-- Secure login with Clerk Auth. Middleware setup to define public routes and admin only routes.
-- Profile creation and profile update (profile image, username, and name) functionality.
-- Booking calendar with blocked dates for existing bookings.
+- Disable dates for other users for existing bookings. 
+- Secure login with Clerk Auth. Admin only route to view application stats. 
+- Users can create and update profile. Image upload and update functionality. 
 - Property filter based on property type.
 - Add to favorite and write review functionality.
 - Edit rental and delete rental functionality.
-- Booking stats for user's own rentals (total revenue and total night's booked)
-- Admin only dashboard to preview application stats and chart displaying last 6 months of booking history.
-- Handling errors with notFound(), redirect(), and useFormState() + useToast()
+- Booking stats for user's own rentals (total revenue and total days booked).
 - Hosted on Vercel.
 
-**Home**
+- Improved LCP score for landing page from 2.66 seconds (needs improvement) to 2.29 seconds (good) by optimizing image load size.
 
-<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
-<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a1_earbiu.jpg' width='700' alt='project image'>
-</a>
 
-**Property Page**
 
-<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
-<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593675/a2_e5wjmt.jpg' width='700' alt='project image'>
-</a>
-
-**Booking Calendar**
-
-<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
-<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a3_xuubej.jpg' width='700' alt='project image'>
-</a>
-
-**Rentals Page**
-
-<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
-<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745594570/a4_xmul5k.jpg' width='700' alt='project image'>
-</a>
-
-**Bookings Page**
-
-<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
-<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1745593674/a5_dsqutu.jpg' width='700' alt='project image'>
-</a>
-
-**Admin Page**
-
-<a href='https://nextjs-airbnb-clone-project.vercel.app/' target='_blank'>
-<img src='https://res.cloudinary.com/ddulynvdq/image/upload/v1747328677/a6_pyc1ip.jpg' width='700' alt='project image'>
-</a>

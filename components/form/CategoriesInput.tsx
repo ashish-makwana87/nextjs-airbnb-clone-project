@@ -17,7 +17,7 @@ function CategoriesInput({ defaultValue }: { defaultValue?: string }) {
       </SelectTrigger>
       <SelectContent>
        {categories.map((item) => {
-        return <SelectItem key={item.label} value={item.label}><span className="flex items-center gap-x-2"><item.icon />{item.label}</span></SelectItem>
+        return <SelectItem key={item.label} value={item.label}><span className="flex items-center gap-x-2 capitalize">{item.label}</span></SelectItem>
        })}
       </SelectContent>
       </Select>

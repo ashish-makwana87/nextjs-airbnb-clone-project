@@ -9,7 +9,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NextJS Airbnb Clone Project",
+  title: "Next.js Property Rental Project",
   description:
     "Created with Clerk Auth, Prisma, Supabase, Zod, React, TypeScript, Tailwind CSS, and Shadcn.",
 };

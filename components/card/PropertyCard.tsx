@@ -11,24 +11,24 @@ function PropertyCard({ property }: { property: PropertyCardType }) {
   const formattedPrice = formatCurrency(price);
 
   return (
-    <article className='relative'>
+    <article className='relative bg-[#f2f2f2] rounded-md'>
       <Link href={`/properties/${propertyId}`}>
-        <div className='h-[300px] overflow-hidden rounded-md'>
+        <div className='relative h-[300px] overflow-hidden rounded-md'>
           <Image
             src={property.image}
-            width={500}
-            height={500}
             alt={property.name}
+            fill
             className='w-full h-full object-cover rounded-md transform hover:scale-110 transition-transform duration-500'
           />
         </div>
-        <div className='mt-3'>
+        <div className='mt-3 p-4'>
+        <div>
           <PropertyRatings inPage={false} propertyId={propertyId} />
           <h3 className='text-base font-semibold mt-1 tracking-wide'>
             {name.substring(0, 30)}
           </h3>
+        <p className='text-sm text-muted-foreground min-h-8 md:min-h-10'>{tagline.substring(0, 40)}</p>
         </div>
-        <p className='text-sm text-muted-foreground'>{tagline.substring(0, 40)}</p>
         <div className='flex justify-between items-center mt-4'>
           <p className='text-sm font-semibold'>
             {" "}
@@ -36,10 +36,8 @@ function PropertyCard({ property }: { property: PropertyCardType }) {
           </p>
           <CountryDetails code={country} />
         </div>
+        </div>
       </Link>
-      <div className="absolute right-3 top-3 z-10">
-      <FavoriteToggleButton propertyId={propertyId} />
-      </div>
     </article>
   );
 }

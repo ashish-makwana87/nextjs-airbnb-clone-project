@@ -16,7 +16,7 @@ async function UserIcon() {
 
   return (
     <div>
-      <LucideUser2 className='h-6 w-6 bg-primary text-white rounded-full dark:bg-transparent' />
+      <LucideUser2 className='h-6 w-6 bg-gray-400 text-white rounded-full dark:bg-transparent' />
     </div>
   );
 }

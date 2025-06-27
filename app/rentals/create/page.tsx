@@ -21,19 +21,18 @@ function CreateRentalPage() {
               name='name'
               type='text'
               label='Name (limit: 20 char)'
-              defaultValue='Cabin in Japan'
             />
             <FormInput
               name='tagline'
               type='text'
               label='Tagline (limit: 30 char)'
-              defaultValue='Dream getaway luxury experience'
             />
             <CategoriesInput />
             <PriceInput />
           </div>
           <TextAreaInput name='description' label='description (10 - 100 words)' />
           <div className='grid md:grid-cols-2 gap-x-4 mt-6 mb-4'>
+            <FormInput name="city" type="text" label="city" />
             <CountriesInput />
             <ImageInput />
           </div>

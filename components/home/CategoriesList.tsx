@@ -28,7 +28,6 @@ function CategoriesList({
                   isActive ? "text-primary" : ""
                 }`}
               >
-                <item.icon className='w-6 h-6 md:w-8 md:h-8 mb-2' />
                 <h4 className='capitalize text-sm md:text-base'>
                   {item.label}
                 </h4>

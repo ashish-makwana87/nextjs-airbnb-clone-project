@@ -11,6 +11,7 @@ import {
 async function ProfilePage() {
   const profile = await fetchProfileAction();
 
+
   return (
     <section className='alignment my-10 md:my-20'>
       <h1 className='head-1 capitalize mb-6'>update profile</h1>

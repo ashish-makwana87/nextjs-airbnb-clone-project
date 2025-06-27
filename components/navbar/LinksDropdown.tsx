@@ -25,10 +25,10 @@ function LinksDropdown() {
       <DropdownMenuTrigger asChild>
         <Button
           variant='outline'
-          className='bg-transparent border-2 border-[#6c6c6c] flex gap-x-3 items-center justify-center focus:outline-none'
+          className='bg-transparent border-2 border-gray-500 flex gap-x-3 items-center justify-center focus:outline-none'
         >
           <UserIcon />
-          <FaBars className='w-6 h-6' />
+          <FaBars className='w-6 h-6 text-gray-300' />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-36' align='start' sideOffset={10}>
@@ -46,8 +46,9 @@ function LinksDropdown() {
         </SignedOut>
         <SignedIn>
           {navLinks.map((item) => {
-
-            if (userId !== process.env.ADMIN_USERID && item.label === 'admin') {return null};
+            if (userId !== process.env.ADMIN_USERID && item.label === "admin") {
+              return null;
+            }
 
             return (
               <DropdownMenuItem key={item.label}>

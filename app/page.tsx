@@ -3,6 +3,7 @@ import CategoriesList from "@/components/home/CategoriesList";
 import EmptyList from "@/components/home/EmptyList";
 import PropertiesContainer from "@/components/home/PropertiesContainer";
 import { Suspense } from "react";
+import NavSearch from "@/components/navbar/NavSearch";
 
 function HomePage({
   searchParams,
@@ -12,6 +13,7 @@ function HomePage({
   
   return (
     <section className='alignment my-10 md:my-12'>
+      <NavSearch />
       <CategoriesList
         category={searchParams.category}
         search={searchParams.search}

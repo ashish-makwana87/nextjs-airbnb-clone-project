@@ -9,7 +9,6 @@ function CountryDetails({code}:{code: string}) {
 
   return (
     <div className='flex items-center gap-x-1 text-sm'>
-     <p>{country.flag} </p>
      <p>{countryName}</p>
      </div>
   )

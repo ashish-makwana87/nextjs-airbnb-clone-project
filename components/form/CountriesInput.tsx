@@ -15,7 +15,7 @@ function CountriesInput({ defaultValue }: { defaultValue?: string }) {
   return (
     <div className='mb-2 md:mb-4'>
       <Label htmlFor={name} className='capitalize'>
-        countries
+        country
       </Label>
       <Select
         name={name}
@@ -30,7 +30,7 @@ function CountriesInput({ defaultValue }: { defaultValue?: string }) {
             return (
               <SelectItem key={item.code} value={item.code}>
                 <span className='flex items-center gap-2'>
-                  {item.flag} {item.name}
+                {item.name}
                 </span>
               </SelectItem>
             );
