@@ -1,59 +1,20 @@
-
 type Category = {
   label: CategoryLabel;
 };
 
-export type CategoryLabel =
-  | "cabin"
-  | "tent"
-  | "airstream"
-  | "cottage"
-  | "rooms"
-  | "caravan"
-  | "beachfront"
-  | "magic"
-  | "apartment"
-  | "lodge";
+export type CategoryLabel = "hotel" | "homestay" | "apartment" | "villa";
 
 export const categories: Category[] = [
   {
-    label: "cabin",
-    
+    label: "hotel",
   },
   {
-    label: "airstream",
-   
-  },
-  {
-    label: "tent",
-  
+    label: "homestay",
   },
   {
     label: "apartment",
-    
   },
   {
-    label: "cottage",
-   
-  },
-  {
-    label: "magic",
- 
-  },
-  {
-    label: "beachfront",
-  
-  },
-  {
-    label: "caravan",
-   
-  },
-
-  {
-    label: "rooms",
-   
-  },
-  {
-    label: "lodge",
+    label: "villa",
   },
 ];

@@ -14,7 +14,7 @@ function CategoriesList({
 
   return (
     <ScrollArea className='py-6 mb-4 md:mb-6'>
-      <div className='flex gap-x-4 md:gap-x-10'>
+      <div className='flex gap-x-2 md:gap-x-4 flex-wrap'>
         {categories.map((item) => {
           const isActive = item.label === category;
 
@@ -23,15 +23,15 @@ function CategoriesList({
               href={`/?category=${item.label}${searchTerm}`}
               key={item.label}
             >
-              <article
-                className={`p-2 flex flex-col items-center cursor-pointer duration-300 hover:text-primary ${
-                  isActive ? "text-primary" : ""
+              <div
+                className={`py-2 px-3 rounded-md cursor-pointer duration-300 ${
+                  isActive ? "text-white bg-primary" : "text-white bg-[#222222]"
                 }`}
               >
                 <h4 className='capitalize text-sm md:text-base'>
                   {item.label}
                 </h4>
-              </article>
+              </div>
             </Link>
           );
         })}

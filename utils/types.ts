@@ -9,6 +9,7 @@ export type PropertyCardType = {
  name: string,
  tagline: string,
  country: string,
+ city: string,
  price: number, 
 }
 

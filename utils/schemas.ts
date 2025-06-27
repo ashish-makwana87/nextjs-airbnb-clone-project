@@ -40,6 +40,7 @@ export const propertySchema = z.object({
     }
   ),
   country: z.string(),
+  city: z.string().min(2, {message: 'city name must be at least 2 characters.'}),
   amenities: z.string(),
   price: z.coerce.number().int().min(0, {
     message: "price must be a positive number.",

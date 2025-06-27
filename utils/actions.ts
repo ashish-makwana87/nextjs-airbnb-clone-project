@@ -181,6 +181,7 @@ export const fetchAllProperties = async ({
       id: true,
       name: true,
       country: true,
+      city: true,
       price: true,
       tagline: true,
     },

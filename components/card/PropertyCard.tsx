@@ -7,7 +7,7 @@ import FavoriteToggleButton from "./FavoriteToggleButton";
 import CountryDetails from "./CountryDetails";
 
 function PropertyCard({ property }: { property: PropertyCardType }) {
-  const { id: propertyId, name, price, image, country, tagline } = property;
+  const { id: propertyId, name, price, image, country, tagline, city } = property;
   const formattedPrice = formatCurrency(price);
 
   return (
@@ -22,6 +22,7 @@ function PropertyCard({ property }: { property: PropertyCardType }) {
           />
         </div>
         <div className='mt-3 p-4'>
+          <p>{city}</p>
         <div>
           <PropertyRatings inPage={false} propertyId={propertyId} />
           <h3 className='text-base font-semibold mt-1 tracking-wide'>
