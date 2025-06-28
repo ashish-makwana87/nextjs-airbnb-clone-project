@@ -25,7 +25,7 @@ function CategoriesList({
             >
               <div
                 className={`py-2 px-3 rounded-md cursor-pointer duration-300 ${
-                  isActive ? "text-white bg-primary" : "text-white bg-[#222222]"
+                  isActive ? "text-white bg-primary border-2 border-primary" : "text-[#222222] border-2 border-[#222222]"
                 }`}
               >
                 <h4 className='capitalize text-sm md:text-base'>

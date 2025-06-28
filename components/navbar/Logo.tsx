@@ -5,7 +5,7 @@ function Logo() {
   return (
     <div>
       <Link href='/' className='text-2xl text-gray-200 md:text-3xl font-bold'>
-        Next.js
+        Properties
       </Link>
     </div>
   );

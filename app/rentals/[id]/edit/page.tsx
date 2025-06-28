@@ -53,6 +53,7 @@ async function EditRentalPage({ params }: { params: { id: string } }) {
                 label='Tagline (limit: 30 char)'
               />
               <CountriesInput defaultValue={rental.country} />
+              <FormInput type="text" name="city" defaultValue={rental.city} label="city" />
               <PriceInput defaultValue={rental.price} />
               <CategoriesInput defaultValue={rental.category} />
             </div>

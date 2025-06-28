@@ -88,7 +88,7 @@ export const fetchProfileAction = async () => {
   const profile = await db.profile.findUnique({ where: { clerkId: user.id } });
 
   if (!profile) redirect("/profile/create");
-  
+
   return profile;
 };
 
@@ -173,7 +173,7 @@ export const fetchAllProperties = async ({
       category,
       OR: [
         { name: { contains: search, mode: "insensitive" } },
-        { tagline: { contains: search, mode: "insensitive" } },
+        { city: { contains: search, mode: "insensitive" } },
       ],
     },
     select: {
@@ -231,7 +231,6 @@ export const toggleFavoriteAction = async (prevState: {
 };
 
 export const fetchAllFavorites = async () => {
-
   const user = await getClerkUser();
   const properties = await db.favorite.findMany({
     where: { profileId: user.id },
@@ -553,18 +552,19 @@ export const fetchChartsData = async () => {
 
   const bookingsPerMonth = bookings.reduce((total, current) => {
     const month = formatDate(current.createdAt, true);
- 
-   const existingMonth = total.find((item) => item.month === month); 
-   
-   if(!existingMonth) {total.push({month: month, count: 1})} else {
-    existingMonth.count = existingMonth.count + 1; 
-   } 
+
+    const existingMonth = total.find((item) => item.month === month);
+
+    if (!existingMonth) {
+      total.push({ month: month, count: 1 });
+    } else {
+      existingMonth.count = existingMonth.count + 1;
+    }
 
     return total;
+  }, [] as Array<{ month: string; count: number }>);
 
-  }, [] as Array<{month:string, count:number}>);
-  
-  console.log(bookingsPerMonth)
+  console.log(bookingsPerMonth);
 
   return bookingsPerMonth;
 };

@@ -28,7 +28,7 @@ function NavSearch() {
   return (
     <Input
       type='search'
-      placeholder='search properties'
+      placeholder='Search by city or property name'
       className='max-w-xs border-2 border-[#6c6c6c] outline-none dark:bg-muted'
       value={search}
       onChange={(e) => {setSearch(e.target.value); handleSearch(e.target.value)} }
