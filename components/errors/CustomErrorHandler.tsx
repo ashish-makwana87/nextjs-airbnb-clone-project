@@ -17,7 +17,7 @@ function CustomErrorHandler({
   }, []);
 
   return (
-    <div>
+    <div className="alignment py-10 md:py-20">
       <h1 className='head-1'>Something went wrong</h1>
       <p>{error.message}</p>
     </div>

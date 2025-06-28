@@ -242,6 +242,7 @@ export const fetchAllFavorites = async () => {
           image: true,
           name: true,
           tagline: true,
+          city: true,
           country: true,
           price: true,
         },

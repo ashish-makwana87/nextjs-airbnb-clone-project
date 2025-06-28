@@ -7,20 +7,20 @@ async function FavoritesPage() {
   const allFavorites = await fetchAllFavorites();
   
 
-  if(!allFavorites) {throw new Error('ooopppppsssssss')}
+  if(!allFavorites) {throw new Error('Something went wrong')}
   
 
-  // if (allFavorites.length === 0 ||) {
+  if (allFavorites.length === 0) {
 
-  //   return (
-  //     <section className='alignment my-10 md:my-20'>
-  //       <EmptyList
-  //         title='No properties found...'
-  //         message='Add some properties as favorites to appear here.'
-  //       />
-  //     </section>
-  //   );
-  // }
+    return (
+      <section className='alignment my-10 md:my-20'>
+        <EmptyList
+          title='No properties found...'
+          message='Add some properties as favorites to appear here.'
+        />
+      </section>
+    );
+  }
 
   return (
     <section className='alignment py-10 md:py-20'>

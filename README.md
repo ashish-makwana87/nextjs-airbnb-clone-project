@@ -15,6 +15,7 @@ https://nextjs-property-rental-project.vercel.app/
 - Hosted on Vercel.
 
 - Improved LCP score for landing page from 2.66 seconds (needs improvement) to 2.29 seconds (good) by optimizing image load size.
+- Custom error handler to capture and display errors for every route. 
 
 
 
