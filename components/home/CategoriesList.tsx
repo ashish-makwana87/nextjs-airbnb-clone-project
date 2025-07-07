@@ -25,7 +25,7 @@ function CategoriesList({
               key={item.label}
             >
               <div
-                className={`py-2 px-3 rounded-md cursor-pointer duration-300 ${
+                className={`py-2 px-3 rounded-md cursor-pointer duration-300 hover:bg-[#181818] hover:border-[#181818] hover:text-white ${
                   isActive ? "text-white bg-primary border-2 border-primary" : "text-[#222222] border-2 border-[#222222]"
                 }`}
               >

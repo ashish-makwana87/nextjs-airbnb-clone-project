@@ -9,7 +9,7 @@ import CountryDetails from "./CountryDetails";
 function PropertyCard({ property }: { property: PropertyCardType }) {
   const { id: propertyId, name, price, image, country, tagline, city } = property;
   const formattedPrice = formatCurrency(price);
-
+  
   return (
     <article className='relative bg-[#f2f2f2] rounded-md'>
       <Link href={`/properties/${propertyId}`}>
@@ -29,8 +29,7 @@ function PropertyCard({ property }: { property: PropertyCardType }) {
           <h3 className='text-base font-semibold mt-1 tracking-wide'>
             {name.substring(0, 30)}
           </h3>
-        <p className='text-sm text-muted-foreground min-h-8 md:min-h-10'>{tagline.substring(0, 40)}</p>
-        
+        <p className='text-sm text-muted-foreground min-h-8 md:min-h-10'>{tagline.substring(0, 50)}...</p>
         <div className='flex justify-between items-center mt-4'>
           <p className='text-sm font-semibold'>
             {" "}

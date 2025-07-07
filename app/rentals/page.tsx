@@ -19,7 +19,7 @@ async function RentalsPage() {
   const rentals = await fetchRentals();
   
   if(rentals.length === 0) {return <div className="alignment my-10 md:my-20">
-    <EmptyList message="Create some rentals and they will appear here" title="No rentals found" />
+    <EmptyList message="Create some rentals and they will appear here." title="No rentals found" />
   </div>}
 
   return (

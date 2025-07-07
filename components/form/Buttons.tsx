@@ -28,7 +28,7 @@ export const SubmitButton = ({
       type='submit'
       disabled={pending}
       size={size}
-      className={`capitalize mt-2 text-base ${className}`}
+      className={`capitalize mt-2 text-base hover:bg-[#181818] ${className}`}
     >
       {pending ? (
         <>

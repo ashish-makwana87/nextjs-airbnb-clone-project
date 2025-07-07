@@ -43,9 +43,6 @@ function LinksDropdown() {
               <button className='w-full capitalize text-left'>signup</button>
             </SignUpButton>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href={'/'}>Demo User</Link>
-          </DropdownMenuItem>
         </SignedOut>
         <SignedIn>
           {navLinks.map((item) => {
