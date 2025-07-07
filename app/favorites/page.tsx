@@ -1,7 +1,8 @@
 import EmptyList from "@/components/home/EmptyList";
-import PropertiesList from "@/components/home/PropertiesList";
+import FavoritePropertyList from "@/components/home/FavoritePropertyList";
 import { fetchAllFavorites } from "@/utils/actions";
 import { redirect } from "next/navigation";
+
 
 async function FavoritesPage() {
   const allFavorites = await fetchAllFavorites();
@@ -25,7 +26,7 @@ async function FavoritesPage() {
   return (
     <section className='alignment py-10 md:py-20'>
       <h1 className='head-1 capitalize mb-6 md:mb-10'>favorite properties</h1>
-      <PropertiesList properties={allFavorites} />
+      <FavoritePropertyList properties={allFavorites} />
     </section>
   );
 }

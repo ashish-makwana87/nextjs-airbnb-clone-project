@@ -24,6 +24,12 @@ const getClerkUser = async () => {
   return user;
 };
 
+const checkTestUser = async () => {
+  const user = await currentUser();
+
+  if (user?.id === 'user_2zPSIJaTjKCXLCDNFuQcn96iOVv') throw new Error("This action is not allowed for demo user");
+}
+
 const getAdminUser = async () => {
   const user = await getClerkUser();
 
@@ -98,6 +104,8 @@ export const updateProfileAction = async (
 ): Promise<{ message: string }> => {
   try {
     const user = await getClerkUser();
+    await checkTestUser();
+    
     const rawData = Object.fromEntries(formData);
     const validatedFields = validateWithZodSchema(profileSchema, rawData);
 
@@ -118,6 +126,7 @@ export const updateProfileImageAction = async (
 ): Promise<{ message: string }> => {
   try {
     const user = await getClerkUser();
+    await checkTestUser();
     const image = formData.get("image");
     const validatedFile = validateWithZodSchema(imageSchema, { image });
 

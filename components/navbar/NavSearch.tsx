@@ -29,7 +29,7 @@ function NavSearch() {
     <Input
       type='search'
       placeholder='Search by city or property name'
-      className='max-w-xs border-2 border-[#6c6c6c] outline-none dark:bg-muted'
+      className='max-w-xs text-sm md:text-base border-[#222222] border-2 outline-none text-[#222222]'
       value={search}
       onChange={(e) => {setSearch(e.target.value); handleSearch(e.target.value)} }
     />

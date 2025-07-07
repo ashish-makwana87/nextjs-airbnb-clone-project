@@ -25,7 +25,7 @@ function LinksDropdown() {
       <DropdownMenuTrigger asChild>
         <Button
           variant='outline'
-          className='bg-transparent border-2 border-gray-500 flex gap-x-3 items-center justify-center focus:outline-none'
+          className='bg-transparent border-2 border-gray-300 flex gap-x-3 items-center justify-center focus:outline-none'
         >
           <UserIcon />
           <FaBars className='w-6 h-6 text-gray-300' />
@@ -42,6 +42,9 @@ function LinksDropdown() {
             <SignUpButton mode='modal'>
               <button className='w-full capitalize text-left'>signup</button>
             </SignUpButton>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href={'/'}>Demo User</Link>
           </DropdownMenuItem>
         </SignedOut>
         <SignedIn>

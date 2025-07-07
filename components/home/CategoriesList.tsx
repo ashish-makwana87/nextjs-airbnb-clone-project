@@ -10,11 +10,12 @@ function CategoriesList({
   category?: string;
   search?: string;
 }) {
+  
   const searchTerm = search ? `&search=${search}` : "";
 
   return (
     <ScrollArea className='py-6 mb-4 md:mb-6'>
-      <div className='flex gap-x-2 md:gap-x-4 flex-wrap'>
+      <div className='flex gap-3 md:gap-4 flex-wrap'>
         {categories.map((item) => {
           const isActive = item.label === category;
 
